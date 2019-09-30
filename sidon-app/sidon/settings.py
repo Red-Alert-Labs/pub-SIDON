@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'sidon.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sidon_db',
+        'USER': 'sidon_test_user',
+        'PASSWORD': 'sidon_test_password',
+        'HOST': 'database',  # <-- IMPORTANT: same name as docker-compose service!
+        'PORT': '5432',
     }
 }
 
@@ -118,3 +122,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'djangoapp/static')
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'djangoapp/media')

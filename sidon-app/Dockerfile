@@ -5,8 +5,8 @@ WORKDIR /opt/services/djangoapp/src
 
 COPY . /opt/services/djangoapp/src
 
-RUN pip install < requirements.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--chdir", "hello", "--bind", ":8000", "hello.wsgi:application"]
+CMD ["gunicorn", "--bind", ":8000", "sidon.wsgi:application"]
