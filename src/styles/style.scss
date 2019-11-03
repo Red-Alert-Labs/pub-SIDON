@@ -1,0 +1,1520 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+/** variables **/
+$text-color: #8197c7;
+$text2-color: #7486ad;
+$GlobalData-bg-color:#07162b;
+$bluebg-color:#203052;
+$dropdown-bg-color:#445880;
+$primarytext-color:#d1e0ff;
+$secondarytext-color:#313e59;
+$btn-bg-color:#2e4066;
+$graph-bg-color: #0c1f3b;
+$orange-color:#fcab8b;
+$purple-color:#cb9bff;
+$lightpurple-color:#cc99ff;
+$skyblue-color:#99fff1;
+$yellow-color:#fff78c;
+$input-field-color:#55668a;
+$signupbtn-bg-color:#697285;
+$border-color:#08172e;
+$arrow-color:#868fa3;
+$unactive-color:#e4e4e4;
+$border-btm-color:#0a1224;
+$gold-color:#ffd500;
+$tr-bg-color:#354566;
+$td-text-color:#7484a6;
+$delete-btn:#9e2130;
+$white-text:#ffffff;
+$bot-heading:#B8CEFF;
+$btn-hover-bg:#2a3153;
+$button-focus-bg:#8693c6;
+/** variables **/
+
+/** mixin **/
+@mixin ActiveButton{
+    color: $text-color;
+    border: 1px solid $bluebg-color;
+    width: 100%;
+    height: auto;
+    line-height: normal;
+    background: $btn-bg-color;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    padding: 15px 0;
+}
+@mixin ActiveButton-hover{
+    color: $text-color;
+    background:$btn-hover-bg;
+}
+@mixin ButtonFocus{
+    color: #1a1e31;
+    background:$button-focus-bg;
+    border: 1px solid $button-focus-bg;    
+}
+
+@mixin dropdown{
+    color: $primarytext-color;
+    border: 1px solid $bluebg-color;
+    width: 120px;
+    background: $btn-bg-color;
+    border-radius: 3px;
+    background-color: $dropdown-bg-color;
+    box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    line-height: 2.2;
+    text-align: left;
+    padding: 0 10px 0 15px;
+}
+@mixin dropdown-hover{
+    border: 1px solid $bluebg-color;
+    background: $graph-bg-color;
+}
+
+/** mixin **/
+html{
+    min-height: 100%;
+    body{
+    /** common css **/
+        font-family: Roboto;
+        background-color: $GlobalData-bg-color;
+
+        h1,h2,h3,h4,h5,h6,a,p,ul,ol,li{
+            margin: 0;
+            padding: 0;
+        }
+    /** common css **/
+
+    /** GlobalData_Left css Starts **/
+    .GlobalData_Left{
+        background: $bluebg-color;
+        position: fixed;
+        width: 240px;
+        height:100%;
+        top:0;
+        left: 0;
+        .imageLogo{
+            width: 240px;
+        }
+        .nameLogo{
+            margin-left: 80px;
+            color: orange;
+        }
+        .User{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            .user-info{
+                padding: 10px 20px;
+                small{
+                    display:block;
+                    font-size: 11px;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: $text-color;
+
+                }
+                span{
+                    display:block;
+                    a{
+                      font-size: 15px;
+                      font-weight: normal;
+                      font-style: normal;
+                      font-stretch: normal;
+                      line-height: 1.27;
+                      letter-spacing: normal;
+                      color: $primarytext-color;
+
+                    }
+                }
+            }
+            ul{
+                li{
+                    .btn{
+                        @include ActiveButton;
+
+                        &:hover{
+                        @include ActiveButton-hover;
+                        }
+                    }
+                }
+            }
+        }
+        .data-heading{
+            border-bottom: 20px solid $bluebg-color;
+            a{
+                font-size: 16px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: $text-color;
+                text-decoration: none;
+                padding: 10px 15px;
+                display: block;
+                background-color: $dropdown-bg-color;
+                .icon-hover{
+                    display: none;
+                }
+                figure{
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 10px 0 0;
+                }
+                figcaption{
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 0 0 0;
+                }
+                &:hover, &:focus{
+                    /*background-color: $bluebg-color;*/
+                    transition-duration:.3s;
+                    -webkit-transition-duration:.3s;
+                    -moz-transition-duration:.3s;
+                    color: $primarytext-color;
+                    .icon{
+                        display: none;
+                    }
+                    .icon-hover{
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+        .is-open{
+            .data-heading{
+                a{
+                    .icon{
+                        display: none;
+                    }
+                    .icon-hover{
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .Collapsible{
+                .Collapsible__trigger{
+                    &:after{
+                        -webkit-transform: rotate(90deg);
+                        transform: rotate(90deg);
+                        -moz-transform: rotate(90deg);
+                        color: #8197C7;
+                        }
+                }
+                .monitor-open-trigger{
+                    .data-heading{
+                        a{
+                            color:#D1E0FF;
+                        }
+                    }
+
+                    &:after{
+                        transform: rotate(0deg);
+                        -moz-transform: rotate(0deg);
+                        -webkit-transform: rotate(0deg);
+                        color: #D1E0FF;
+                    }
+                }
+                .site-trigger {
+                    padding-left: 0;
+                    .data-heading a{
+                        font-size: 12px;
+                        padding-left: 30px;
+                    }
+                }
+                .site-open-trigger{
+                    padding-left: 0;
+                    .data-heading a{
+                        font-size: 12px;
+                        padding-left: 30px;
+                    }
+                }
+                .bot-trigger{
+                    padding-left: 60px;
+                }
+                .function-trigger {
+                    .data-heading a{
+                        font-size: 12px;
+                    }
+                }
+                .function-open-trigger {
+                    .data-heading a{
+                        font-size: 12px;
+                    }
+                }
+
+            .data-heading{
+                border-bottom: 1px solid $bluebg-color;
+            }
+            .Collapsible{
+                .Collapsible__trigger{
+                    &:after{
+                        transform: rotate(90deg);
+                        -moz-transform: rotate(90deg);
+                        -webkit-transform: rotate(90deg);
+                        color: #8197C7;
+                    }
+                    a{
+                        padding-left: 30px;
+                        background-color: $btn-hover-bg;
+                    }
+                    a:hover{
+                        background-color: #3f4a7a;
+                    }
+                }
+                .function-open-trigger{
+                    &:after{
+                        transform: rotate(0deg);
+                        -moz-transform: rotate(0deg);
+                        -webkit-transform: rotate(0deg);
+                        color: #D1E0FF;
+                    }
+                    .data-heading{
+                        a{
+                            color: #D1E0FF;
+                            figcaption{
+                                color: #D1E0FF;
+                            }
+                        }
+                    }
+                }
+                .site-trigger {
+                    padding-left: 0;
+                    &:after {
+                        display: none;
+                    }
+                    a{                        
+                        padding-left: 50px;
+                    }
+                }
+
+                .function-open-trigger{
+                    a{
+                        position: relative;
+                        &:before {
+                            content: "";
+                            border-left: 10px solid #4b567f;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: auto;
+                            height: 48px;
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /** GlobalData_Left css Ends**/
+
+    /** GlobalData_Center css Starts **/
+    .GlobalData_Center{
+        background-color: $GlobalData-bg-color;
+        top: 0;
+        padding: 30px;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: 1em;
+        }
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color:  $GlobalData-bg-color;
+            outline: 1px solid  $GlobalData-bg-color;
+        }
+        .header{
+            .row{
+                margin-bottom: 5px;
+                h2{
+                  font-size: 24px;
+                  font-weight: 300;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: normal;
+                  letter-spacing: -0.4px;
+                  color: #4f566e;
+                  span{
+                    cursor: pointer;  
+                    &:last-child{
+                        color:$primarytext-color;
+                        &:after{
+                            content: "";
+                            color: #fff;
+                            padding-right: 0;
+                        }
+                    }
+                    &:after{
+                        content: ">";
+                        font-size: 17px;
+                        color: #83889e;
+                        padding-right: 5px;
+                    }
+                  }
+                }
+                .CompanyCost{
+                  font-size: 11px;
+                  font-weight: 500;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: normal;
+                  letter-spacing: normal;
+                  text-align: right;
+                  color: $secondarytext-color;
+                  text-align: left;
+                    margin: 10px 0 10px 30px;
+                }
+                .drpdwn-block {
+                    display: inline-block;
+                    margin: 0 0 0 20px;
+                    vertical-align: top;
+                    .btn{
+                        @include dropdown;
+                        position: relative;
+                        min-width: 120px;
+                        width: auto;
+                        text-transform: capitalize;
+                        span {
+                            padding-right: 10px;
+                            justify-content: normal;
+                        }
+                        i{
+                            position: absolute;
+                            right: 3px;
+                            top: 0;
+                            line-height: 33px;
+                        }
+
+                        &:hover{
+                            @include dropdown-hover;
+                        }
+                    }
+                }
+                nav{
+                    height: auto;
+                    line-height: normal;
+                    .nav-wrapper{
+                        a.breadcrumb{
+                          font-size: 26px;
+                          font-weight: 300;
+                          font-style: normal;
+                          font-stretch: normal;
+                          line-height: normal;
+                          letter-spacing: -0.4px;
+                          color:$unactive-color;
+                            &:before{
+                                margin: 4px 10px 0 8px;
+                                color: $arrow-color;
+                            }
+                        }
+                        a.breadcrumb.active{
+                          color:$primarytext-color;
+                        }
+                    }
+                }
+            }
+        }
+        .transaction-block{
+            .border-right{
+                border-right:1px solid $dropdown-bg-color;
+            }
+            .transactionStatus{
+                h3{
+                  font-size: 44px;
+                  font-weight: 100;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: normal;
+                  letter-spacing: 1.1px;
+                }
+                .hour{
+                    color:$orange-color;
+                }
+                .cost{
+                    color:$purple-color;
+                }
+                .trans{
+                    color:$skyblue-color;
+                }
+                .sucess{
+                    color:$yellow-color;
+                }
+                p{
+                  font-size: 11px;
+                  font-weight: 500;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: normal;
+                  letter-spacing: normal;
+                  color: $text-color;
+                }
+            }
+        }
+        .Productivity-Cost{
+            width: 100%;
+            float: left;
+            .row{
+                margin: 0;
+                .card{
+                    background-color: $graph-bg-color;
+                    border-radius: 4px;
+                    height: 310px;
+
+                    .card-action{
+                        background-color: $bluebg-color;
+                        box-shadow: 0 2px 50px 0 rgba(0, 0, 0, 0.1);
+                        height: 45px;
+                        padding: 0 ;
+                        .row{
+                            margin: 0;
+
+                            h4{
+                              font-size: 14px;
+                              font-weight: 500;
+                              font-style: normal;
+                              font-stretch: normal;
+                              line-height: normal;
+                              letter-spacing: normal;
+                              color: $primarytext-color;
+                              padding: 10px 0;
+                            }
+                            span{
+                              font-size: 11px;
+                              font-weight: 500;
+                              font-style: normal;
+                              font-stretch: normal;
+                              line-height: normal;
+                              letter-spacing: normal;
+                              text-align: right;
+                              color: $text-color;
+                              display: inline-block;
+                              vertical-align: middle;
+                              margin-left: 10px;
+                              margin-top: 4px;
+                                i{
+                                    font-size: 11px;
+                                    position: relative;
+                                    top: 2px;
+                                    right: 2px;
+                                }
+                            }
+                            .number{
+                              font-size: 28px;
+                              font-weight: 100;
+                              font-style: normal;
+                              font-stretch: normal;
+                              line-height: normal;
+                              letter-spacing: -0.2px;
+                              text-align: right;
+                              color: $orange-color;
+                            }
+                            .skyblue-text {
+                                color: #B5FFF5 !important;
+                            }
+                        }
+                    }
+                    .card-image{
+                        background-color: $graph-bg-color;
+                        padding: 20px 10px 10px 10px;
+                        img{
+                            border-radius:0;
+                            padding: 10px;
+                            margin: 0 auto;
+                            max-width: 100%;
+                            width: auto;
+                        }
+                        span.numn {
+                            position: absolute;
+                            transform: translate(-50%,-50%);
+                            -webkit-transform: translate(-50%,-50%);
+                            -moz-transform: translate(-50%,-50%);
+                            left: 50%;
+                            top: 50%;
+                            letter-spacing: -2.5px;
+                            font-size: 50px;
+                            font-family: Roboto;
+                            font-weight: 300;
+                            color: #c299ff;
+                        }
+                    }
+                    .SavedCost{
+                        background-color: $graph-bg-color;
+                        border-top: 1px solid $border-color;
+                        /*position: absolute;
+                        bottom: 0;*/
+                        width: 100%;
+                        .row{
+                            margin: 0;
+
+                            h5{
+                              font-size: 13px;
+                              font-weight: normal;
+                              font-style: normal;
+                              font-stretch: normal;
+                              line-height: normal;
+                              letter-spacing: -0.1px;
+                              color: $text2-color;
+                              padding: 12px 0 ;
+                            }
+
+                            .padding-0{
+                                padding: 0;
+                                .btn {
+                                color: $primarytext-color;
+                                border: 1px solid $bluebg-color;
+                                background: $btn-bg-color;
+                                border-radius: 3px;
+                                background-color: $dropdown-bg-color;
+                                box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.1);
+                                font-size: 19px;
+                                font-weight: 300;
+                                font-style: normal;
+                                font-stretch: normal;
+                                line-height: 40px;
+                                letter-spacing: normal;
+                                text-align: left;
+                                padding: 0 10px;
+                                position: relative;
+                                height: 45px;
+                                width: 133px;
+                                    i{
+                                        position: absolute;
+                                        right: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .Productivity-Transaction{
+            .card{
+                background-color: $graph-bg-color;
+                border-radius: 4px;
+                /*height: 29vh;*/
+
+                .card-action{
+                    background-color: $bluebg-color;
+                    box-shadow: 0 2px 50px 0 rgba(0, 0, 0, 0.1);
+                    height: 45px;
+                    padding: 0 ;
+                    .row{
+                        margin: 0;
+                        .top-label {
+                            padding: 5px 0px 0px 17px;
+                        }
+                        h4{
+                          font-size: 13px;
+                          font-weight: 500;
+                          font-style: normal;
+                          font-stretch: normal;
+                          line-height: normal;
+                          letter-spacing: normal;
+                          color: $primarytext-color;
+                          padding: 10px 0;
+                        }
+                        span{
+                          font-size: 11px;
+                          font-weight: 500;
+                          font-style: normal;
+                          font-stretch: normal;
+                          line-height: normal;
+                          letter-spacing: normal;
+                          text-align: right;
+                          color: $text-color;
+                          display: inline-block;
+                          vertical-align: middle;
+                            margin-left: 10px;
+                            i{
+                                font-size: 11px;
+                                position: relative;
+                                top: 2px;
+                                right: 2px;
+                            }
+                        }
+                        .number{
+                          font-size: 28px;
+                          font-weight: 100;
+                          font-style: normal;
+                          font-stretch: normal;
+                          line-height: normal;
+                          letter-spacing: -0.2px;
+                          text-align: right;
+                          color: $orange-color;
+                        }
+                        .lightpurple-text{
+                            color: $lightpurple-color;
+                        }
+                        .skyblue-text{
+                            color: $skyblue-color;
+                        }
+                    }
+                }
+                .card-image{
+                    background-color: $graph-bg-color;
+                    padding: 20px;
+                    img{
+                        border-radius:0;
+                        padding: 10px;
+                        margin: 0 auto;
+                        max-width: 100%;
+                        width: auto;
+                    }
+                }
+                .SavedCost{
+                    background-color: $graph-bg-color;
+                    border-top: 1px solid $border-color;
+                    .row{
+                        margin: 0;
+                        h5{
+                          font-size: 13px;
+                          font-weight: normal;
+                          font-style: normal;
+                          font-stretch: normal;
+                          line-height: normal;
+                          letter-spacing: -0.1px;
+                          color: $text2-color;
+                          padding: 12px 0 ;
+                        }
+                        .padding-0{
+                            padding: 0;
+                            .btn {
+                            color: $primarytext-color;
+                            border: 1px solid $bluebg-color;
+                            background: $btn-bg-color;
+                            border-radius: 3px;
+                            background-color: $dropdown-bg-color;
+                            box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.1);
+                            font-size: 19px;
+                            font-weight: 300;
+                            font-style: normal;
+                            font-stretch: normal;
+                            line-height: 40px;
+                            letter-spacing: normal;
+                            text-align: left;
+                            padding: 0 10px;
+                            position: relative;
+                            height: 45px;
+                            width: 133px;
+                                i{
+                                    position: absolute;
+                                    right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /** GlobalData_Center css Ends**/
+
+    /** GlobalData_Right css Starts **/
+    .GlobalData_Right{
+        background: #0F1D34;
+        position: fixed;
+        width: 320px;
+        height:100%;
+        right: 0;
+        top: 0;
+        overflow: auto;
+        padding-top: 60px;
+
+        &::-webkit-scrollbar {
+            width: 1em;
+        }
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color:  $GlobalData-bg-color;
+            outline: 1px solid  $GlobalData-bg-color;
+        }
+
+        .data-heading{
+            border-bottom: 20px solid $bluebg-color;
+            a{
+                font-size: 14px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: $white-text;
+                text-decoration: none;
+                padding: 10px 15px;
+                display: block;
+                background-color: #0c1f3b;
+                .icon-hover{
+                    display: none;
+                }
+                figure{
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 10px 0 0;
+                }
+                figcaption{
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 0 0 0;
+                    color: $bot-heading;
+                }
+                &:hover, &:focus{
+                    /*background-color: $bluebg-color;*/
+                    transition-duration:.3s;
+                    -webkit-transition-duration:.3s;
+                    -moz-transition-duration:.3s;
+                    color: $primarytext-color;
+                    background-color: #5a6489;
+                    .icon{
+                        display: none;
+                    }
+                    .icon-hover{
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .Collapsible{
+            background-color: $dropdown-bg-color;
+                .Collapsible__trigger{
+                    position: relative;
+
+                    &:after{
+                        display: none;
+                    }
+                    span.Bot-func {
+                        position: absolute;
+                        right: 10px;
+                        top: 18px;
+                        font-size: 12px;
+                        color:#8197C7;
+
+                        i.material-icons.dp48 {
+                            font-size: 10px;
+                            padding-left: 5px;
+                            color:#364C7A;
+                        }
+                    }
+
+                    span.Bot-func.active {
+                        i.material-icons.dp48 {
+                            color: #7ed900;
+                        }
+                    }
+                }
+                .site-trigger {
+                    padding-left: 30px;
+                }
+                .site-open-trigger{
+                    padding-left: 30px;
+                }
+                .bot-trigger{
+                    padding-left: 0px;
+                }
+
+            .data-heading{
+                border-bottom: 1px solid $bluebg-color;
+            }
+        }
+
+        .botInfo{
+            border-radius: 0;
+            background-color: #1a1e31;
+            -webkit-box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
+            padding: 15px;
+            margin: 0;
+            position: relative;
+            bottom: 0;
+            .row{
+                margin: 0;
+
+                .info-left{
+                    font-size: 14px;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: $primarytext-color;
+                    text-transform: uppercase;
+
+                    svg{
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 2px;
+                    }
+                    span{
+                        display: inline-block;
+                        vertical-align: middle
+                    }
+                }
+                .info-right{
+                    font-size: 14px;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: normal;
+                    letter-spacing: -0.2px;
+                    color:$gold-color;
+                    text-shadow: 0 0 5px rgba(255, 248, 160, 0.3);
+                }
+            }
+            .bot-details{
+                margin-top: 30px;
+                h6{
+                  font-size: 11px;
+                  font-weight: 500;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: normal;
+                  letter-spacing: normal;
+                  color: $text-color;
+                  text-transform: uppercase;
+                    margin-bottom: 3px;
+                }
+                p{
+                  font-size: 15px;
+                  font-weight: normal;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: 1.27;
+                  letter-spacing: normal;
+                  color: $primarytext-color;
+                }
+            }
+        }
+
+        /*-- search section --*/
+        .search-tab {
+            padding: 15px 35px 15px 14px;
+            background: #0c1f3b;
+            display: block;
+            position: fixed;
+            top: 0;
+            right: 25px;
+            max-width: 300px;
+            width: 100%;
+            z-index: 999;
+
+            input#search-input {
+                background: $btn-hover-bg;
+                border-radius: 4px;
+                padding: 0 25px 0 15px;
+                margin: 0;
+                height: 32px;
+                font-size: 12px;
+                color: $bot-heading;
+                border: 1px solid $btn-hover-bg;
+                &:focus {
+                    border: none;
+                    box-shadow: none;
+                    border: 1px solid #5a6489;
+                }
+                &:hover{
+                    border: 1px solid #5a6489;
+                }
+            }
+            #search-input::-webkit-input-placeholder {
+                color: $bot-heading;
+            }
+            #search-input::-moz-placeholder {
+                color: $bot-heading;
+            }
+            #search-input:-ms-input-placeholder {
+                 color: $bot-heading;
+            }
+            #search-input:-moz-placeholder {
+                color: $bot-heading;
+            }
+            i {
+                color: $bot-heading;
+                position: absolute;
+                right: 0;
+                top: 16px;
+                font-size: 19px;
+                height: 32px;
+                width: 32px;
+                text-align: center;
+                line-height: 30px;
+                background-color: $btn-hover-bg;
+            }
+        }
+
+
+
+    }
+    /** GlobalData_Right css Ends**/
+
+    /** signUp_Form css Starts **/
+        .signUp_Form{
+          width: 100%;
+          max-width: 400px;
+            margin: 0 auto;
+            h4{
+              font-size: 26px;
+              font-weight: 300;
+              font-style: normal;
+              font-stretch: normal;
+              line-height: normal;
+              letter-spacing: -0.4px;
+              text-align: center;
+              color: $primarytext-color;
+              margin: 80px 0 30px 0;
+            }
+            form{
+              border-radius: 6px;
+              background-color: $graph-bg-color;
+              box-shadow: 0 2px 36px 0 rgba(0, 0, 0, 0.24);
+              padding: 50px 30px 20px;
+              margin-bottom: 30px;
+                .input-field {
+                    height: 80px;
+                    padding: 0;
+                    label{
+                      font-size: 17px;
+                      font-weight: normal;
+                      font-style: normal;
+                      font-stretch: normal;
+                      line-height: 1.12;
+                      letter-spacing: normal;
+                      color: $input-field-color;
+                      left: 0;
+                    }
+                    input.validate {
+                        border-radius: 6px;
+                        background-color: $graph-bg-color;
+                        box-shadow: 0 2px 36px 0 rgba(0, 0, 0, 0.24);
+                        border-radius: 4px;
+                        background-color: $bluebg-color;
+                        border-color: $bluebg-color;
+                        border-radius: 0;
+                        height: 45px;
+                        padding: 0 10px;
+                        margin-bottom: 30px;
+                        margin-top: 10px;
+                        color: $text-color;
+                        width: 94%;
+
+                    }
+                }
+                .reset{
+                  font-size: 15px;
+                  font-weight: normal;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: 1.12;
+                  letter-spacing: normal;
+                  color: $input-field-color;
+                  text-align: center;
+                  margin-bottom: 50px;
+                }
+                .padding-0{
+                    padding: 0;
+                }
+                button.btn{
+                  border-radius: 4px;
+                  border: solid 1px $signupbtn-bg-color;
+                  font-size: 15px;
+                  font-weight: normal;
+                  font-style: normal;
+                  font-stretch: normal;
+                  letter-spacing: normal;
+                  text-align: center;
+                  background-color: $graph-bg-color;
+                  color: $signupbtn-bg-color;
+                  width: 100%;
+                  text-transform: none;
+                  margin-top: 30px;
+                  height: 45px;
+                  line-height: 45px;
+
+                    &:hover{
+                        @include ActiveButton-hover;
+                    }
+                    &:focus{
+                        @include ButtonFocus;
+                    }
+                }
+                .ForgotPassword{
+                    font-size: 17px;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 30px;
+                    color: $text-color;
+                    padding-top: 10px;
+                    display: block;
+                }
+            }
+            .supportContact{
+                p{
+                    color: $input-field-color;
+                    font-size: 17px;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 30px;
+                    a{
+                      font-weight: bold;
+                      line-height: 1.12;
+                      letter-spacing: normal;
+                      color: $text-color;
+                    }
+                }
+            }
+
+        }
+    /** signUp_Form css Ends**/
+
+    /** UserAdministration css Starts**/
+      .UserAdministration {
+        padding:30px 30px 30px 270px;
+        float: left;
+        width: 100%;
+          nav{
+            height: auto;
+            line-height: normal;
+
+            .breadcrumb{
+              font-size: 26px;
+              font-weight: 300;
+              font-style: normal;
+              font-stretch: normal;
+              line-height: normal;
+              letter-spacing: -0.4px;
+              color: $unactive-color;
+
+              &:before{
+              margin: 4px 10px 0 8px;
+              color: $arrow-color;
+              }
+            }
+            .breadcrumb.active{
+              color:$primarytext-color;
+            }
+          }
+          button{
+            @include dropdown;
+            text-align:center;
+            &:hover{
+              @include dropdown-hover;
+            }
+          }
+          button.done-btn{
+           background-color:$bluebg-color;
+           color:#364c7a;
+          }
+          .user-table{
+             padding-top:10px;
+              table{
+                border-radius: 4px;
+                overflow: hidden;
+                thead{
+                  background-color: $bluebg-color;
+                  box-shadow: 0 2px 50px 0 rgba(0, 0, 0, 0.1);
+                  tr{
+                    border-bottom:1px solid $tr-bg-color;
+                    th{
+                      font-size: 14px;
+                      font-weight: 500;
+                      font-style: normal;
+                      font-stretch: normal;
+                      line-height: normal;
+                      letter-spacing: normal;
+                      color: $primarytext-color;
+                      padding:10px 15px;
+                    }
+                  }
+                }
+                tbody{
+                background-color:$graph-bg-color;
+                  tr{
+                  border-bottom:1px solid $tr-bg-color;
+                    td{
+                      font-size: 15px;
+                      font-weight: normal;
+                      font-style: normal;
+                      font-stretch: normal;
+                      line-height: normal;
+                      letter-spacing: normal;
+                      color: $td-text-color;
+                      padding:10px 15px;
+                      a{
+                        font-size: 15px;
+                        font-weight: normal;
+                        font-style: normal;
+                        font-stretch: normal;
+                        line-height: normal;
+                        letter-spacing: normal;
+                        color: $td-text-color;
+                      }
+                    }
+
+                  }
+
+                }
+              }
+            }
+          .user-form{
+            margin:30px 0 0;
+            .user-information{
+              background-color: $bluebg-color;
+              box-shadow: 0 2px 50px 0 rgba(0, 0, 0, 0.1);
+              height: 45px;
+              line-height: 42px;
+              .row{
+                margin:0;
+                h5{
+                  font-size: 14px;
+                  font-weight: 500;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: normal;
+                  letter-spacing: normal;
+                  color: $primarytext-color;
+                  padding:14px 15px;
+                }
+                .Delete-btn{
+                  border-radius: 3px;
+                  background-color: $delete-btn;
+                  box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.1);
+                  font-size: 14px;
+                  font-weight: 500;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: normal;
+                  letter-spacing: normal;
+                  text-align: center;
+                  color: $white-text;
+                  text-transform:capitalize;
+                }
+              }
+            }
+            form{
+              background-color:$graph-bg-color;
+              padding:40px 20px;
+              label{
+                width:100%;
+                font-size: 19px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.27;
+                letter-spacing: normal;
+                color: $input-field-color;
+              }
+              input{
+                border-radius: 4px;
+                background-color: $bluebg-color;
+                max-width: 365px;
+                width: 100%;
+                padding: 0 10px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.27;
+                letter-spacing: normal;
+                color: $input-field-color;
+                margin-top: 10px;
+                margin-bottom: 30px;
+                border-bottom-color: $bluebg-color;
+              }
+
+              h5{
+                width:100%;
+                font-size: 15px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 1.27;
+                letter-spacing: normal;
+                color: $input-field-color;
+                text-align:left;
+              }
+
+              .dropdown-button{
+                @include dropdown;
+                height: 45px;
+                line-height: 41px;
+                max-width:300px;
+                width:100%;
+                margin-top: 10px;
+                border-radius:6px;
+                font-weight: 400;
+
+                &:hover{
+                  @include dropdown-hover;
+                }
+              }
+
+            }
+            .BotPermission{
+              height:600px;
+              overflow:auto;
+
+              &::-webkit-scrollbar {
+                  width: 1em;
+              }
+              &::-webkit-scrollbar-track {
+                  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+              }
+              &::-webkit-scrollbar-thumb {
+                  background-color:  $GlobalData-bg-color;
+                  outline: 1px solid  $GlobalData-bg-color;
+              }
+
+
+            }
+          }
+
+
+
+
+
+
+      }
+    /** UserAdministration css Ends**/
+    }
+
+    /** tooltip**/
+    /*div[role="tooltip"] {
+        left: -10px !important;
+    }*/
+    /** tooltip **/
+
+    /** Modal css Starts**/
+    .margin-btm {
+        margin-bottom: 25px;
+    }
+    #sites-modal{
+        padding: 0;
+        &:focus{
+            outline: none;
+        }
+        .modal-content{
+            h4 {
+                background: $btn-hover-bg;
+                padding: 15px;
+                display: block;
+                color: $bot-heading;
+                font-size: 18px;
+                margin-bottom: 18px;
+                span {
+                    a {
+                        font-size: 14px;
+                        color: $bot-heading;
+                        float: right;
+                    }
+                }
+            }
+            .border-right{
+                border-right:1px solid $dropdown-bg-color;
+            }
+            .SiteStatus{
+                h3{
+                  font-size: 44px;
+                  font-weight: 100;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: normal;
+                  letter-spacing: 1.1px;
+                  padding-left: 15px;
+                }
+                .hour{
+                    color:$orange-color;
+                }
+                .cost{
+                    color:$purple-color;
+                }
+                .trans{
+                    color:$skyblue-color;
+                }
+                .sucess{
+                    color:$yellow-color;
+                }
+                p{
+                  font-size: 11px;
+                  padding-left: 15px;
+                  font-weight: 500;
+                  font-style: normal;
+                  font-stretch: normal;
+                  line-height: normal;
+                  letter-spacing: normal;
+                  color: $text-color;
+                }
+
+                button.btn{
+                    border-radius: 4px;
+                    border: solid 1px $signupbtn-bg-color;
+                    font-size: 15px;
+                    font-weight: normal;
+                    font-style: normal;
+                    font-stretch: normal;
+                    letter-spacing: normal;
+                    text-align: center;
+                    background-color: $graph-bg-color;
+                    color: $signupbtn-bg-color;
+                    width: 100%;
+                    text-transform: none;
+                    margin-top: 30px;
+                    height: 45px;
+                    line-height: 45px;
+                    &:hover{
+                    @include ActiveButton-hover;
+                    }
+                  }
+            }
+        }
+    }
+
+
+
+    /** Modal css Ends**/
+
+}
+
+
+/** responsive **/
+@media (max-width:1450px){
+    html{
+        body{
+
+            /** GlobalData_Center css Starts **/
+            .GlobalData_Center{
+
+                .header{
+                    .row{
+                        nav{
+                            .nav-wrapper{
+                                a.breadcrumb{
+                                  font-size: 20px;
+                                    &:before{
+                                        margin: 0 10px 0 8px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .Productivity-Cost{
+                    .row{
+                        .card{
+                            height: 320px;
+                            .card-action{
+                                .row{
+                                    .top-label {
+                                        padding: 5px 0px 0px 17px;
+                                    }
+                                    h4{
+                                      font-size: 12px;
+                                    }
+                                }
+                            }
+                            .SavedCost{
+                                width: 100%;
+                                position: absolute;
+                                bottom: -5px;
+                                .row{
+                                    .m8{
+                                        width: 100%;
+                                    }
+                                    .m4{
+                                        width: 100%;
+                                        .drpdwn-block{
+                                            width: 100%;
+                                            .btn {
+                                            font-size: 15px;
+                                            width: 100%;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            /** GlobalData_Center css Ends**/
+
+            /** UserAdministration css Starts**/
+            .UserAdministration {
+              padding:30px 30px 30px 270px;
+              float: left;
+              width: 100%;
+                nav{
+                  margin:5px 0 0;
+                  background: transparent;
+
+                  .breadcrumb{
+                    font-size: 20px;
+
+                    &:before{
+                    margin: 0 0px 0 0;
+                    }
+                  }
+                }
+
+            }
+            /** UserAdministration css Ends**/
+        }
+    }
+
+
+}
+@media (max-width:1600px){
+    html{
+        body{
+
+            /** GlobalData_Center css Starts **/
+            .GlobalData_Center{
+
+                .header{
+                    .row{
+                        .drpdwn-block {
+                            margin: 0 0 0 0px;
+                            .btn{
+                                width: 83px;
+                            }
+                        }
+                        nav{
+                            .nav-wrapper{
+                                margin-top: 7px;
+                                a.breadcrumb{
+                                  font-size: 17px;
+                                    &:before{
+                                        margin: -4px 0 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                
+            }
+            /** GlobalData_Center css Ends**/
+        }
+    }
+}
