@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+
+  sidon-app:
+    build: sidon-app
+    volumes:
+      - ./sidon-app:/opt/services/djangoapp/src
+      - static_volume:/opt/services/djangoapp/static  # <-- bind the static volume
+      - media_volume:/opt/services/djangoapp/media  # <-- bind the media volume
+    networks:
+      - nginx_network
+      - database_network
+
+  nginx:
+    image: nginx:1.17.4
+    ports:
+      - 8000:80
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/opt/services/djangoapp/static
+      - media_volume:/opt/services/djangoapp/media
+    depends_on:
+      - sidon-app
+    networks:
+      - nginx_network
+
+  database:
+    image: postgres:11
+    env_file:
+      - config/database/db_env
+    networks:
+      - database_network
+    volumes:
+      - database_volume:/var/lib/postgresql/data
+
+networks:
+  nginx_network:
+    driver: bridge
+  database_network:
+    driver: bridge
+
+volumes:
+  database_volume:
+  static_volume:  # <-- declare the static volume
+  media_volume:  # <-- declare the media volume
