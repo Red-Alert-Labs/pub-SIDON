@@ -1,3 +1,0 @@
-POSTGRES_USER=sidon_test_user
-POSTGRES_PASSWORD=sidon_test_password
-POSTGRES_DB=sidon_db
