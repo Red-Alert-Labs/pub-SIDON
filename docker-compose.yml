@@ -32,7 +32,7 @@ services:
     networks:
       - database_network
     volumes:
-      - database_volume:/var/lib/postgresql/data
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
 
 networks:
   nginx_network:
@@ -41,6 +41,5 @@ networks:
     driver: bridge
 
 volumes:
-  database_volume:
   static_volume:  # <-- declare the static volume
   media_volume:  # <-- declare the media volume

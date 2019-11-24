@@ -1,3 +1,4 @@
+docker-compose -f /opt/app/docker-compose.yml stop
 docker-compose -f /opt/app/docker-compose.yml build;
 docker-compose -f /opt/app/docker-compose.yml up -d database;
 docker-compose -f /opt/app/docker-compose.yml run --rm sidon-app /bin/bash -c "./manage.py migrate";
