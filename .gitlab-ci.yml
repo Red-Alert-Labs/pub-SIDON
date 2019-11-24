@@ -23,7 +23,7 @@ deploy:
   script:
     - gem install dpl
     - dpl --provider=s3 --bucket=sidonrevisions --upload_dir=latest --region=eu-west-3 --bundle_type=tar --local_dir=dpl_cd_upload --skip_cleanup=true
-    - dpl --provider=codedeploy --application=SidonApp --revision_type=s3 --bucket=sidonrevisions --key=latest/sidon.tar --deployment-group-name=SidonApp --wait_until_deployed --region=eu-west-3 --file_exists_behavior=overwrite
+    - dpl --provider=codedeploy --application=SidonApp --revision_type=s3 --bucket=sidonrevisions --key=latest/sidon.tar --deployment-group-name=SidonApp --wait_until_deployed --region=eu-west-3 --file_exists_behavior=overwrite --description='GitLab Devops'
   environment:
     name: production
     url: 15.188.48.8
