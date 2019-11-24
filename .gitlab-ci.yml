@@ -1,0 +1,31 @@
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  stage: test
+  script:
+    - echo "PYTHON TEST SHOULD RUN HERE"
+
+build:
+  stage: build
+  script:
+    - tar -cvf sidon.tar sidon-app docker-compose.yml web-app config scripts appspec.yml
+    - mkdir -p dpl_cd_upload
+    - mv serverapp.tar dpl_cd_upload/sidon.tar
+  artifacts:
+    paths:
+         - dpl_cd_upload/
+
+deploy:
+  stage: deploy
+  script:
+    - gem install dpl
+    - dpl --provider=s3 --bucket=sidonrevisions --upload_dir=latest --region=eu-west-3 --bundle_type=tar --local_dir=dpl_cd_upload --skip_cleanup=true
+    - dpl --provider=codedeploy --application=SidonApp --revision_type=s3 --bucket=sidonrevisions --key=latest/sidon.tar --deployment-group-name=SidonApp --wait_until_deployed --region=eu-west-3 --file_exists_behavior=overwrite
+  environment:
+    name: production
+    url: 15.188.48.8
+  only:
+    - master
