@@ -13,7 +13,7 @@ build:
   script:
     - tar -cvf sidon.tar sidon-app docker-compose.yml web-app config scripts appspec.yml
     - mkdir -p dpl_cd_upload
-    - mv serverapp.tar dpl_cd_upload/sidon.tar
+    - mv sidon.tar dpl_cd_upload/sidon.tar
   artifacts:
     paths:
          - dpl_cd_upload/
