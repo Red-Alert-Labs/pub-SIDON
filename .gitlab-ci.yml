@@ -28,16 +28,6 @@ build:webapp:
     paths:
          - webapp_upload/
 
-build:serverapp:
-  stage: build
-  script:
-    - tar -cvf serverapp.tar sidon-app docker-compose.yml web-app config scripts appspec.yml
-    - mkdir -p dpl_cd_upload
-    - mv serverapp.tar dpl_cd_upload/serverapp.tar
-  artifacts:
-    paths:
-         - dpl_cd_upload/
-
 deploy:webapp:
   stage: deploy
   script:
@@ -52,6 +42,16 @@ deploy:webapp:
       artifacts: true
   only:
     - master
+
+build:serverapp:
+  stage: build
+  script:
+    - tar -cvf serverapp.tar sidon-app docker-compose.yml web-app config scripts appspec.yml
+    - mkdir -p dpl_cd_upload
+    - mv serverapp.tar dpl_cd_upload/serverapp.tar
+  artifacts:
+    paths:
+         - dpl_cd_upload/
 
 deploy:serverapp:
   stage: deploy
