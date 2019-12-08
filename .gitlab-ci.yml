@@ -9,7 +9,7 @@ test:
     - echo "PYTHON TEST SHOULD RUN HERE"
 
 
-build-react-app:
+build:webapp:
   image: node:12.13.1
   stage: build
   script:
@@ -28,7 +28,7 @@ build-react-app:
     paths:
          - webapp_upload/
 
-build:
+build:serverapp:
   stage: build
   script:
     - tar -cvf serverapp.tar sidon-app docker-compose.yml web-app config scripts appspec.yml
@@ -38,7 +38,7 @@ build:
     paths:
          - dpl_cd_upload/
 
-deploy-webapp:
+deploy:webapp:
   stage: deploy
   script:
     - gem install dpl
@@ -47,17 +47,23 @@ deploy-webapp:
   environment:
     name: production
     url: http://15.188.48.8
+  needs:
+    - job: build:webapp
+      artifacts: true
   only:
     - master
 
-deploy:
+deploy:serverapp:
   stage: deploy
   script:
     - gem install dpl
     - dpl --provider=s3 --bucket=sidonrevisions --upload_dir=latest --region=eu-west-3 --bundle_type=tar --local_dir=dpl_cd_upload --skip_cleanup=true
-    - dpl --provider=codedeploy --application=SidonApp --revision_type=s3 --bucket=sidonrevisions --key=latest/serverapp.tar --deployment-group-name=SidonApp --wait_until_deployed --region=eu-west-3 --file_exists_behavior=overwrite --description='GitLab Devops'
+    - dpl --provider=codedeploy --application=SidonApp --revision_type=s3 --bucket=sidonrevisions --key=latest/serverapp.tar --deployment-group-name=ServerApp --wait_until_deployed --region=eu-west-3 --file_exists_behavior=overwrite --description='GitLab Devops'
   environment:
     name: production
     url: http://15.188.48.8
+  needs:
+    - job: build:serverapp
+      artifacts: true
   only:
     - master
