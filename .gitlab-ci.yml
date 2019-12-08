@@ -9,7 +9,7 @@ test:
     - echo "PYTHON TEST SHOULD RUN HERE"
 
 
-buildreactapp:
+build-react-app:
   image: node:12.13.1
   stage: build
   script:
@@ -19,7 +19,7 @@ buildreactapp:
     - mkdir -p dpl_cd_upload
     - mv webapp.tar dpl_cd_upload/webapp.tar
   rules:
-    changes:
+    - changes:
         - .gitlab-ci.yml
         - docker-compose.yml
         - web-app/*
