@@ -9,7 +9,7 @@ test:
     - echo "PYTHON TEST SHOULD RUN HERE"
 
 
-build-react-app:
+buildreactapp:
   image: node:12.13.1
   stage: build
   script:
