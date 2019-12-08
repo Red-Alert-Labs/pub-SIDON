@@ -20,9 +20,9 @@ build-react-app:
     - mv webapp.tar dpl_cd_upload/webapp.tar
   rules:
     changes:
-      - .gitlab-ci.yml
-      - docker-compose.yml
-      - web-app/*
+        - .gitlab-ci.yml
+        - docker-compose.yml
+        - web-app/*
   artifacts:
     paths:
          - dpl_cd_upload/
