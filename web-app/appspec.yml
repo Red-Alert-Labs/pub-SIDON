@@ -1,0 +1,9 @@
+version: 0.0
+os: linux
+files:
+  - source: ./build/
+    destination: /opt/webapp
+    overwrite: true
+hooks:
+  BeforeInstall:
+    - location: scripts/cleanup.sh
