@@ -15,7 +15,7 @@ build-react-app:
   script:
     - cd web-app
     - yarn install
-    - yarn run build --prod
+    - yarn run build
     - tar -cvf webapp.tar build  scripts appspec.yml
     - mkdir -p ../webapp_upload
     - mv webapp.tar ../webapp_upload/webapp.tar
