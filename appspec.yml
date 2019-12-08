@@ -5,6 +5,8 @@ files:
     destination: /opt/app
     overwrite: true
 hooks:
+  BeforeInstall:
+    - location: scripts/cleanup.sh
   ApplicationStart:
     - location: scripts/restart-server.sh
       timeout: 3600
