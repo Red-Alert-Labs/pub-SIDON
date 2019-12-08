@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: ./build/
-    destination: /opt/webapp
+    destination: /opt/webapp/html
     overwrite: true
 hooks:
   BeforeInstall:

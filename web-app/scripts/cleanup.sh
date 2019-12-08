@@ -1,1 +1,1 @@
-rm -rf /opt/webapp/*
+rm -rf /opt/webapp/html/*
