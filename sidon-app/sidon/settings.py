@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'core'
+
 ]
 
 MIDDLEWARE = [
@@ -79,7 +82,7 @@ DATABASES = {
         'NAME': 'sidon_db',
         'USER': 'sidon_test_user',
         'PASSWORD': 'sidon_test_password',
-        'HOST': 'database',  # <-- IMPORTANT: same name as docker-compose service!
+        'HOST': 'localhost',  # <-- IMPORTANT: same name as docker-compose service!
         'PORT': '5432',
     }
 }
@@ -124,3 +127,11 @@ USE_TZ = True
 STATIC_URL = '/api/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'djangoapp/static')
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'djangoapp/media')
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAuthenticatedOrReadOnly',),
+    'DEFAULT_AUTHENTICATION_CLASSES' : ('rest_framework_simplejwt.authentication.JWTAuthentication',)
+}
+
+
+APPEND_SLASH = False
