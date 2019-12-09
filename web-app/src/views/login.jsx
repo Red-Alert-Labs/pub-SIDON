@@ -1,49 +1,57 @@
-import React, { Component } from "react";
-import Input from "../components/common/input";
-import FormButton from "../components/common/formButton";
+import React from "react";
+import Joi from "joi-browser";
+import { Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 
-class Login extends Component {
+import Form from "../components/common/form";
+import authService from "../services/authService";
+
+class Login extends Form {
   state = {
-    formValues: {},
-    loading: false,
-    error: {}
+    data: { username: "", password: "" },
+    errors: {}
+  };
+
+  schema = {
+    username: Joi.string()
+      .required()
+      .label("Username"),
+    password: Joi.string()
+      .required()
+      .label("Password")
+  };
+
+  doSubmit = async () => {
+    try {
+      const { data } = this.state;
+      await authService.login(data.username, data.password);
+      const { state } = this.props.location;
+      window.location = state ? state.from.pathname : "/";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        toast.error("Incorrect Login/password");
+      }
+    }
   };
 
   render() {
-    const { formValues, loading, error } = this.state;
+    if (authService.getCurrentUser()) return <Redirect to="/" />;
 
     return (
       <div className="signUp_Form">
         <h4 className="center-align">Sign In</h4>
         <div className="row">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className="row">
-              <Input
-                value={formValues.email}
-                placeholder="Email Address"
-                label="Email Address"
-                name="email"
-                onChange={this.handleChange}
-                error={error.email}
-              />
-              <Input
-                value={formValues.password}
-                placeholder="Password"
-                label="Password"
-                name="password"
-                onChange={this.handleChange}
-                type="password"
-                error={error.password}
-              />
-              <FormButton
-                type="submit"
-                text="Sign In"
-                onClick={this.loginUser}
-                disabled={loading}
-              />
+              {this.renderInput("username", "Username")}
+              {this.renderInput("password", "Password", "password")}
+              <div className="col s12 padding-0 center-align">
+                {this.renderButton("Login")}
+              </div>
+
               <div className="col s12  center-align">
                 <p className="center-align ">
-                  <a href="#" className="ForgotPassword">
+                  <a href="/forgot" className="ForgotPassword">
                     {" "}
                     Forgot password?{" "}
                   </a>
@@ -53,7 +61,7 @@ class Login extends Component {
           </form>
           <div className="supportContact center-align">
             <p>
-              <a href="#"> Contact Support </a>
+              <a href="/support"> Contact Support </a>
             </p>
           </div>
         </div>
