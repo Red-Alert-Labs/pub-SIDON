@@ -7,6 +7,11 @@ import App from './App';
 import './styles/materialize.min.css';
 import './styles/style.css';
 import './styles/main.css';
+
+import "bootstrap/dist/css/bootstrap.css";
+import "./assets/scss/now-ui-dashboard.scss?v1.2.0";
+import "./assets/css/demo.css";
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

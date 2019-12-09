@@ -1,14 +1,15 @@
 import React from 'react';
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import './App.css';
 import Login from './views/login';
+import Home from './views/home';
 
 function App() {
   return (
     <Switch>
       <Route path="/login" component={Login} />
-      <Redirect from="/" exact to="/not-found" />
+      <Route path="/" component={Home} />
     </Switch>
   );
 }
