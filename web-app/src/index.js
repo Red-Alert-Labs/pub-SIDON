@@ -9,7 +9,6 @@ import './styles/style.css';
 import './styles/main.css';
 import './styles/sb-admin-2.min.css';
 import './vendor/fontawesome-free/css/all.min.css'
-
 import "bootstrap/dist/css/bootstrap.css";
 
 import * as serviceWorker from './serviceWorker';
