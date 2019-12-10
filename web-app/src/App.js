@@ -8,8 +8,8 @@ import Home from './views/home';
 function App() {
   return (
     <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/" component={Home} />
+      <Route path="/login" component={Login} /> 
+      <Route path="/" component={Home}></Route>
     </Switch>
   );
 }

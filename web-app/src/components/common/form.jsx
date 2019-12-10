@@ -57,10 +57,7 @@ class Form extends Component {
 
   renderButton(label) {
     return (
-      <button
-        disabled={this.validate()}
-        className="btn waves-effect waves-light"
-      >
+      <button disabled={this.validate()} className="material-button">
         {label}
       </button>
     );

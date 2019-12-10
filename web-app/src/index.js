@@ -4,13 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 
 import './index.css';
 import App from './App';
-import './styles/materialize.min.css';
+
 import './styles/style.css';
 import './styles/main.css';
+import './styles/sb-admin-2.min.css';
+import './vendor/fontawesome-free/css/all.min.css'
 
 import "bootstrap/dist/css/bootstrap.css";
-import "./assets/scss/now-ui-dashboard.scss?v1.2.0";
-import "./assets/css/demo.css";
 
 import * as serviceWorker from './serviceWorker';
 

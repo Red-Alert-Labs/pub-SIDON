@@ -3,7 +3,9 @@ version: '3'
 services:
 
   sidon-app:
-    build: sidon-app
+    build:
+      context: ./sidon-app
+      dockerfile: Dockerfile.dev
     volumes:
       - ./sidon-app:/opt/services/djangoapp/src
       - static_volume:/opt/services/djangoapp/static  # <-- bind the static volume
