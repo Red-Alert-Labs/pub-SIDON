@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'sidon_db',
         'USER': 'sidon_test_user',
         'PASSWORD': 'sidon_test_password',
-        'HOST': 'localhost',  # <-- IMPORTANT: same name as docker-compose service!
+        'HOST': 'database',  # <-- IMPORTANT: same name as docker-compose service!
         'PORT': '5432',
     }
 }
