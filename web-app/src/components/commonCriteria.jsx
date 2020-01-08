@@ -26,9 +26,9 @@ class CommonCriteria extends Component {
     const { commoncriterias } = this.state;
     const fd = <CommonCriteriaForm />;
     return (
-      <div class="container-fluid">
-        <h1 class="h3 mb-2 text-gray-800">Common Criteria</h1>
-        <p class="mb-4">CWE Common Criteria</p>
+      <div className="container-fluid">
+        <h1 className="h3 mb-2 text-gray-800">Common Criteria</h1>
+        <p className="mb-4">CWE Common Criteria</p>
 
         <CollapseCard
           expand={this.state.expandNewCard}
@@ -37,17 +37,17 @@ class CommonCriteria extends Component {
           cardbody={fd}
         />
 
-        <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">CWE List</h6>
+        <div className="card shadow mb-4">
+          <div className="card-header py-3">
+            <h6 className="m-0 font-weight-bold text-primary">CWE List</h6>
           </div>
-          <div class="card-body">
-            <div class="table-responsive">
+          <div className="card-body">
+            <div className="table-responsive">
               <table
-                class="table table-bordered"
+                className="table table-bordered"
                 id="dataTable"
                 width="100%"
-                cellspacing="0"
+                cellSpacing="0"
               >
                 <thead>
                   <tr>
@@ -65,7 +65,7 @@ class CommonCriteria extends Component {
                 </tfoot>
                 <tbody>
                   {commoncriterias.map(cc => (
-                    <tr>
+                    <tr key={cc.id}>
                       <td>{cc.id}</td>
                       <td>{cc.name}</td>
                       <td>{cc.cwe_id}</td>
