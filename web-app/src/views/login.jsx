@@ -28,8 +28,11 @@ class Login extends Form {
       const { state } = this.props.location;
       window.location = state ? state.from.pathname : "/";
     } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
+      if (ex.response && ex.response.status === 401) {
         toast.error("Incorrect Login/password");
+        let errors = { ...this.state.errors };
+        errors[alert] = "Incorrect Login/password";
+        this.setState({ errors });
       }
     }
   };
@@ -45,6 +48,7 @@ class Login extends Form {
             <div className="material-row">
               {this.renderInput("username", "Username")}
               {this.renderInput("password", "Password", "password")}
+              {this.renderAlert("error")}
               <div className="col s12 padding-0 center-align">
                 {this.renderButton("Login")}
               </div>

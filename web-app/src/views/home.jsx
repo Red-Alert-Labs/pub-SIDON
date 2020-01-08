@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Footer from "../components/footer";
 import SideBar from "../components/sidebar";
 import NavBar from "../components/navbar";
 import Dashboard from "../components/dashboard";
 import CommonCriteria from "../components/commonCriteria";
+import authService from "../services/authService";
 
 class Home extends Component {
   state = {};
   render() {
+    if (!authService.getCurrentUser()) return <Redirect to="/login" />;
+
     return (
       <div id="wrapper">
         <SideBar />

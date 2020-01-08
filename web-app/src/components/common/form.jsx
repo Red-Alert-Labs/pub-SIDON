@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
 import Select from "./Select";
+import AlertLine from "./AlertLine";
 class Form extends Component {
   state = {
     data: {},
@@ -57,7 +58,7 @@ class Form extends Component {
 
   renderButton(label) {
     return (
-      <button disabled={this.validate()} className="material-button">
+      <button disabled={this.validate()} className="btn btn-primary btn-block">
         {label}
       </button>
     );
@@ -74,6 +75,13 @@ class Form extends Component {
         label={label}
         error={errors[name]}
       />
+    );
+  }
+
+  renderAlert(type) {
+    const { errors } = this.state;
+    return (
+      errors[alert] && <AlertLine alertType={type} message={errors[alert]} />
     );
   }
 

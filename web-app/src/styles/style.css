@@ -1,5 +1,5 @@
 html body {
-  background-color: #07162b;
+  background-color: #4e73df;
  }
 
 .sign-in-form {
@@ -10,7 +10,7 @@ html body {
 
 .inner-form {
   border-radius: 6px;
-  background-color: #0c1f3b;
+  background-color: #fff;
   box-shadow: 0 2px 36px 0 rgba(0,0,0,.24);
   padding: 50px 30px 20px;
   margin-bottom: 30px;
