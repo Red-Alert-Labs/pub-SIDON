@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import authService from './services/authService';
 
@@ -16,7 +16,7 @@ class App extends Component {
   }
   render(){
     
-    const {user} = this.state;
+    //const {user} = this.state;
 
     return (
       <Switch>

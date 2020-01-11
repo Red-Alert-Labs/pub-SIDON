@@ -37,7 +37,9 @@ deploy:webapp:
   environment:
     name: production
     url: http://15.188.48.8
-  dependencies: ["build:webapp"]
+  needs:
+    - job: build:webapp
+      artifacts: true
   only:
     - master
 

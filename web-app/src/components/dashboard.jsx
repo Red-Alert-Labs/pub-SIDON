@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import InfoCardRow from "./InfoCardRow";
 
 class Dashboard extends Component {
   state = {};
