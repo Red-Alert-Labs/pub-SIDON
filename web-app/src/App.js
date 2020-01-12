@@ -6,6 +6,7 @@ import authService from './services/authService';
 import './App.css';
 import Login from './views/login';
 import Home from './views/home';
+import Logout from './components/logout';
 
 class App extends Component {
   state = {};
@@ -16,12 +17,13 @@ class App extends Component {
   }
   render(){
     
-    //const {user} = this.state;
+    const {user} = this.state;
 
     return (
       <Switch>
+        <Route path="/logout" component={Logout}/>
         <Route path="/login" component={Login} /> 
-        <Route path="/" component={Home}></Route>
+        <Route path="/"  render={props => <Home {...props} user={user}/>}></Route>
       </Switch>
     );
   }
