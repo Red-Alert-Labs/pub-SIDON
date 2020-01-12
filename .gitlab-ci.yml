@@ -19,11 +19,6 @@ build:webapp:
     - tar -cvf webapp.tar build  scripts appspec.yml
     - mkdir -p ../webapp_upload
     - mv webapp.tar ../webapp_upload/webapp.tar
-  rules:
-    - changes:
-        - .gitlab-ci.yml
-        - docker-compose.yml
-        - web-app/*
   artifacts:
     paths:
          - webapp_upload/
@@ -49,14 +44,6 @@ build:serverapp:
     - tar -cvf serverapp.tar sidon-app docker-compose.yml web-app config scripts appspec.yml
     - mkdir -p dpl_cd_upload
     - mv serverapp.tar dpl_cd_upload/serverapp.tar
-  rules:
-    - changes:
-        - .gitlab-ci.yml
-        - docker-compose.yml
-        - sidon-app/*
-        - config
-        - scripts
-        - appspec.yml
   artifacts:
     paths:
          - dpl_cd_upload/
