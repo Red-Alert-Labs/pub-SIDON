@@ -7,5 +7,6 @@ router.register('requirements', views.RequirementsGroupView)
 router.register('commoncriteria', views.CommonCriteriaView)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('user/', views.CurrentUserView.as_view()),
 ]
