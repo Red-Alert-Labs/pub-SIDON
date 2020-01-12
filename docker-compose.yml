@@ -16,6 +16,7 @@ services:
     image: nginx:1.17.4
     ports:
       - 80:80
+      - 3215:3215
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       - /opt/webapp:/opt/webapp
