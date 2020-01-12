@@ -3869,11 +3869,14 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  text-decoration: none;
+  color: #555558;
 }
 
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  color: #858796;
 }
 
 .nav-link:hover, .nav-link:focus {

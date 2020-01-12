@@ -8,16 +8,17 @@ import CommonCriteria from "../components/commonCriteria";
 import authService from "../services/authService";
 
 class Home extends Component {
-  state = {};
   render() {
     if (!authService.getCurrentUser()) return <Redirect to="/login" />;
+
+    const { user } = this.props;
 
     return (
       <div id="wrapper">
         <SideBar />
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
-            <NavBar />
+            <NavBar user={user} />
             <Route path="/commoncriteria" component={CommonCriteria} />
             <Route path="/" exact component={Dashboard} />
           </div>
