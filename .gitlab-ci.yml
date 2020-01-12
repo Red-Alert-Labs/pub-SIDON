@@ -37,6 +37,11 @@ deploy:webapp:
   environment:
     name: production
     url: http://15.188.48.8
+  rules:
+    - changes:
+        - .gitlab-ci.yml
+        - docker-compose.yml
+        - web-app/*
   needs:
     - job: build:webapp
       artifacts: true
@@ -70,6 +75,14 @@ deploy:serverapp:
   environment:
     name: production
     url: http://15.188.48.8
+  rules:
+    - changes:
+        - .gitlab-ci.yml
+        - docker-compose.yml
+        - sidon-app/*
+        - config
+        - scripts
+        - appspec.yml
   needs:
     - job: build:serverapp
       artifacts: true
