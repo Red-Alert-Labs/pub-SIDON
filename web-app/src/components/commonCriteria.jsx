@@ -22,9 +22,14 @@ class CommonCriteria extends Component {
     this.setState({ expandNewCard });
   };
 
+  handleNew = data => {
+    const commoncriterias = [...this.state.commoncriterias, data];
+    this.setState({ commoncriterias });
+  };
+
   render() {
     const { commoncriterias } = this.state;
-    const fd = <CommonCriteriaForm />;
+    const fd = <CommonCriteriaForm updateTable={this.handleNew} />;
     return (
       <div className="container-fluid">
         <h1 className="h3 mb-2 text-gray-800">Common Criteria</h1>

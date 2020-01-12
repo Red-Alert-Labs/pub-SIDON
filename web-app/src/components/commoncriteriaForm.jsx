@@ -28,6 +28,7 @@ class CommonCriteriaForm extends Form {
 
   doSubmit = async () => {
     await saveCommonCriteria(this.state.data);
+    this.props.updateTable(this.state.data);
   };
 
   render() {
