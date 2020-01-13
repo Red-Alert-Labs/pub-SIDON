@@ -7,8 +7,7 @@ class CommonCriteria extends Component {
   state = {
     commoncriterias: [],
     currentPage: 1,
-    pageSize: 10,
-    expandNewCard: false
+    pageSize: 10
   };
 
   async componentDidMount() {
@@ -16,11 +15,6 @@ class CommonCriteria extends Component {
 
     this.setState({ commoncriterias });
   }
-
-  handleToggleCard = () => {
-    const expandNewCard = !this.state.expandNewCard;
-    this.setState({ expandNewCard });
-  };
 
   handleNew = data => {
     const commoncriterias = [...this.state.commoncriterias, data];
@@ -32,11 +26,10 @@ class CommonCriteria extends Component {
     const fd = <CommonCriteriaForm updateTable={this.handleNew} />;
     return (
       <div className="container-fluid">
-        <h1 className="h3 mb-2 text-gray-800">Common Criteria</h1>
+        <h4 className="mb-2 text-gray-800">Common Criteria</h4>
         <p className="mb-4">CWE Common Criteria</p>
 
         <CollapseCard
-          expand={this.state.expandNewCard}
           title={"Add New"}
           onClick={this.handleToggleCard}
           cardbody={fd}

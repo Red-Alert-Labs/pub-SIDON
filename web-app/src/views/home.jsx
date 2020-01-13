@@ -6,6 +6,7 @@ import NavBar from "../components/navbar";
 import Dashboard from "../components/dashboard";
 import CommonCriteria from "../components/commonCriteria";
 import authService from "../services/authService";
+import Requirements from "../components/requirements";
 
 class Home extends Component {
   render() {
@@ -20,6 +21,7 @@ class Home extends Component {
           <div id="content">
             <NavBar user={user} />
             <Route path="/commoncriteria" component={CommonCriteria} />
+            <Route path="/requirements" component={Requirements} />
             <Route path="/" exact component={Dashboard} />
           </div>
           <Footer />
