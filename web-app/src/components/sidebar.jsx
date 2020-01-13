@@ -134,9 +134,15 @@ class SideBar extends Component {
         </li>
 
         <NavButton
-          label={"Common Criteria"}
-          path={"/commoncriteria"}
-          icon={"fas fa-fw fa-table"}
+          label="Requirements List"
+          path="/requirements"
+          icon="fas fa-fw fa-clipboard"
+        />
+
+        <NavButton
+          label="Common Criteria"
+          path="/commoncriteria"
+          icon="fas fa-fw fa-table"
         />
 
         <hr className="sidebar-divider d-none d-md-block" />
