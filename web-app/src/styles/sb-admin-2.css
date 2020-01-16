@@ -2261,8 +2261,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #2e59d9;
-  border-color: #2653d4;
+  background-color: rgb(25, 136, 233);
+  border-color: rgb(25, 136, 233);
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2278,8 +2278,8 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #2653d4;
-  border-color: #244ec9;
+  background-color: rgb(25, 136, 233);
+  border-color: rgb(25, 136, 233);
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -4720,7 +4720,7 @@ a.badge:hover, a.badge:focus {
 
 a.badge-primary:hover, a.badge-primary:focus {
   color: #fff;
-  background-color: #2653d4;
+  background-color: rgb(25, 136, 233);
 }
 
 a.badge-primary:focus, a.badge-primary.focus {
@@ -6213,7 +6213,7 @@ a.close.disabled {
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #2653d4 !important;
+  background-color: rgb(25, 136, 233) !important;
 }
 
 .bg-secondary {
