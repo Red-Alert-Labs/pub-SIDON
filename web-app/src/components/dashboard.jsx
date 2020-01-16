@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "./common/Card";
+import ScanPanel from "./ScanPanel";
 
 class Dashboard extends Component {
   state = {};
@@ -17,17 +18,7 @@ class Dashboard extends Component {
           </a>
         </div>
         {/* InfoCard Row */}
-        <Card
-          title="Scan"
-          body={
-            <div class="wrapper">
-              <div class="file-upload">
-                <input type="file" />
-                <i class="fa fa-arrow-up"></i>
-              </div>
-            </div>
-          }
-        />
+        <Card title="Scan" body={<ScanPanel />} />
       </div>
     );
   }
