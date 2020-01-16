@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import RequirementsGroup, CommonCriteria
+from .models import RequirementsGroup, CommonCriteria, Scan
 
 
 
@@ -20,3 +20,9 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username',)
+
+
+class ScanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Scan
+        fields = ('name', 'uploaded_at', 'file')

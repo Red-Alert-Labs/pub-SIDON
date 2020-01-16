@@ -14,3 +14,9 @@ class RequirementsGroup(models.Model):
 
     def __str__(self):
         return self.name
+
+class Scan(models.Model):
+    name = models.CharField(max_length=255)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    file = models.FileField(blank=False, null=False)
+    
