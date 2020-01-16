@@ -1,0 +1,101 @@
+push	rbp
+mov	rbp, rsp
+mov	eax, 1
+pop	rbp
+ret	
+push	rbp
+mov	rbp, rsp
+mov	eax, 0
+pop	rbp
+ret	
+push	rbp
+mov	rbp, rsp
+sub	rsp, 0x10
+mov	eax, 0
+call	0
+mov	eax, 0
+call	0xb
+test	eax, eax
+je	0x44
+lea	rdi, [rip]
+call	0x42
+jmp	0x5b
+lea	rax, [rip]
+mov	qword ptr [rbp - 8], rax
+mov	rax, qword ptr [rbp - 8]
+mov	rdi, rax
+call	0x5b
+nop	
+leave	
+ret	
+push	rbp
+mov	rbp, rsp
+sub	rsp, 0x10
+mov	eax, 0
+call	0
+mov	eax, 0
+call	0
+test	eax, eax
+je	0x95
+lea	rax, [rip]
+mov	qword ptr [rbp - 8], rax
+mov	rax, qword ptr [rbp - 8]
+mov	rdi, rax
+call	0x95
+nop	
+leave	
+ret	
+push	rbp
+mov	rbp, rsp
+sub	rsp, 0x10
+mov	eax, 0
+call	0xb
+test	eax, eax
+je	0xbc
+lea	rdi, [rip]
+call	0xba
+jmp	0xc7
+lea	rax, [rip]
+mov	qword ptr [rbp - 8], rax
+mov	eax, 0
+call	0
+test	eax, eax
+je	0xe1
+mov	rax, qword ptr [rbp - 8]
+mov	rdi, rax
+call	0xe1
+nop	
+leave	
+ret	
+push	rbp
+mov	rbp, rsp
+sub	rsp, 0x10
+mov	eax, 0
+call	0
+test	eax, eax
+je	0x105
+lea	rax, [rip]
+mov	qword ptr [rbp - 8], rax
+mov	eax, 0
+call	0
+test	eax, eax
+je	0x11f
+mov	rax, qword ptr [rbp - 8]
+mov	rdi, rax
+call	0x11f
+nop	
+leave	
+ret	
+push	rbp
+mov	rbp, rsp
+mov	eax, 0
+call	0x16
+mov	eax, 0
+call	0x5e
+mov	eax, 0
+call	0x98
+mov	eax, 0
+call	0xe4
+nop	
+pop	rbp
+ret

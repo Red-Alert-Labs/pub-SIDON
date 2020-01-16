@@ -1,0 +1,9 @@
+push	rbp
+mov	rbp, rsp
+sub	rsp, 0x10
+mov	rax, qword ptr [rbp - 8]
+mov	rdi, rax
+call	0x14
+nop	
+leave	
+ret

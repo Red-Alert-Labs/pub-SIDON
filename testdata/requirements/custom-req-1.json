@@ -1,0 +1,10 @@
+[
+  {
+    "CWE": "457",
+    "Name": "Use of Uninitialized Variable"
+  },
+  {
+    "CWE": "416",
+    "Name": "Use After Free"
+  }
+]

@@ -1,0 +1,25 @@
+push	rbp
+mov	rbp, rsp
+mov	eax, 1
+pop	rbp
+ret	
+push	rbp
+mov	rbp, rsp
+mov	eax, 0
+pop	rbp
+ret	
+push	rbp
+mov	rbp, rsp
+sub	rsp, 0x10
+mov	eax, 0
+call	0
+mov	eax, 0
+call	0
+test	eax, eax
+je	0x42
+mov	rax, qword ptr [rbp - 8]
+mov	rdi, rax
+call	0x42
+nop	
+leave	
+ret
