@@ -5,15 +5,26 @@ class ScanPanel extends Component {
   };
 
   handleFileChange = ({ currentTarget: input }) => {
-    //const filename = input;
-    console.log(input);
+    const filename = input.files[0].name;
+    console.log(input.value);
+    this.setState({ filename });
+  };
 
-    //sthis.setState({ filename });
+  validate = () => {
+    return null;
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const errors = this.validate();
+
+    if (errors) return;
   };
   render() {
     return (
       <React.Fragment>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="wrapper">
             <h3 className="inline">Select the Binary/Object file</h3>
           </div>
