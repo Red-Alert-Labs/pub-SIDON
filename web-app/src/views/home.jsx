@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import Footer from "../components/footer";
 import SideBar from "../components/sidebar";
 import NavBar from "../components/navbar";
@@ -8,6 +8,7 @@ import CommonCriteria from "../components/commonCriteria";
 import authService from "../services/authService";
 import Requirements from "../components/requirements";
 import ScanResults from "../components/ScanResults";
+import ScanResult from "../components/ScanResult";
 
 class Home extends Component {
   render() {
@@ -21,10 +22,13 @@ class Home extends Component {
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
             <NavBar user={user} />
-            <Route path="/commoncriteria" component={CommonCriteria} />
-            <Route path="/requirements" component={Requirements} />
-            <Route path="/scans" component={ScanResults} />
-            <Route path="/" exact component={Dashboard} />
+            <Switch>
+              <Route path="/commoncriteria" component={CommonCriteria} />
+              <Route path="/requirements" component={Requirements} />
+              <Route path="/scans/:id" component={ScanResult} />
+              <Route path="/scans" component={ScanResults} />
+              <Route path="/" exact component={Dashboard} />
+            </Switch>
           </div>
           <Footer />
         </div>
