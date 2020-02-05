@@ -7,6 +7,7 @@ import Dashboard from "../components/dashboard";
 import CommonCriteria from "../components/commonCriteria";
 import authService from "../services/authService";
 import Requirements from "../components/requirements";
+import ScanResults from "../components/ScanResults";
 
 class Home extends Component {
   render() {
@@ -22,6 +23,7 @@ class Home extends Component {
             <NavBar user={user} />
             <Route path="/commoncriteria" component={CommonCriteria} />
             <Route path="/requirements" component={Requirements} />
+            <Route path="/scans" component={ScanResults} />
             <Route path="/" exact component={Dashboard} />
           </div>
           <Footer />
