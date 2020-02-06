@@ -1,30 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
+import TableHeader from "./tableHeader";
+import TableBody from "./tableBody";
 
-class Table extends Component {
-  state = {};
-  render() {
-    const { headers, contents } = this.props;
-    return (
-      <table className="table table-bordered" width="100%" cellSpacing="0">
-        <thead>
-          <tr>
-            {headers.map(header => (
-              <th key={header}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {contents.map(row => (
-            <tr key={"x"}>
-              {row.map(data => (
-                <td key={data}>{data}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  }
-}
+const Table = ({ columns, data }) => {
+  return (
+    <table className="table table-bordered" width="100%" cellSpacing="0">
+      <TableHeader columns={columns} />
+      <TableBody data={data} columns={columns} />
+    </table>
+  );
+};
 
 export default Table;

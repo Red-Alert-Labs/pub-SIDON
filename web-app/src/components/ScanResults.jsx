@@ -9,7 +9,7 @@ class ScanResults extends Component {
       <div className="container-fluid">
         <Card
           title="Results"
-          body={<Table headers={["Hey", "Foo", "br"]} contents={[["Hey"]]} />}
+          body={<Table columns={["Hey", "Foo", "br"]} data={[["Hey"]]} />}
         />
       </div>
     );
