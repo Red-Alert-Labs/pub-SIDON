@@ -3,6 +3,10 @@ import React, { Component } from "react";
 class TableBody extends Component {
   state = {};
 
+  renderCell = (item, column) => {
+    if (column.content) return column.content(item);
+    return item[column.path];
+  };
   createKey = (item, column) => {
     return item.id + (column.path || column.key);
   };
@@ -15,7 +19,9 @@ class TableBody extends Component {
         {data.map(item => (
           <tr key={item.id}>
             {columns.map(column => (
-              <td key={this.createKey(item, column)}>SOME</td>
+              <td key={this.createKey(item, column)}>
+                {this.renderCell(item, column)}
+              </td>
             ))}
           </tr>
         ))}

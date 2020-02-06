@@ -15,7 +15,7 @@ class SideBar extends Component {
           <div className="sidebar-brand-icon">
             <i className="fas fa-shield-alt"></i>
           </div>
-          <div className="sidebar-brand-text mx-3">SIDON Admin</div>
+          <div className="sidebar-brand-text mx-3">SIDON</div>
         </a>
 
         <hr className="sidebar-divider my-0" />
