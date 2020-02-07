@@ -26,6 +26,7 @@ class SideBar extends Component {
           icon={"fas fa-fw fa-tachometer-alt"}
         />
 
+        <NavButton label="Scans" path="/scans" icon="fas fa-fw fa-poll-h" />
         <hr className="sidebar-divider" />
 
         <div className="sidebar-heading">Manage</div>

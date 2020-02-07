@@ -5,7 +5,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register('requirements', views.RequirementsGroupView)
 router.register('commoncriteria', views.CommonCriteriaView)
-
+router.register('scans', views.ScansView)
 
 urlpatterns = [
     path('', include(router.urls)),

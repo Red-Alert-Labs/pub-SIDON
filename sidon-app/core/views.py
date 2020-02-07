@@ -3,8 +3,8 @@ from rest_framework import viewsets, views
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
-from .models import RequirementsGroup, CommonCriteria
-from .serializers import RequirementsGroupSerializer, CommonCriteriaSerializer, UserSerializer, ScanSerializer
+from .models import RequirementsGroup, CommonCriteria, Scan
+from .serializers import RequirementsGroupSerializer, CommonCriteriaSerializer, UserSerializer, ScansSerializer
 
 class RequirementsGroupView(viewsets.ModelViewSet):
     queryset = RequirementsGroup.objects.all()
@@ -13,6 +13,11 @@ class RequirementsGroupView(viewsets.ModelViewSet):
 class CommonCriteriaView(viewsets.ModelViewSet):
     queryset = CommonCriteria.objects.all()
     serializer_class = CommonCriteriaSerializer
+
+class ScansView(viewsets.ModelViewSet):
+    queryset = Scan.objects.all()
+    print(queryset.results)
+    serializer_class = ScansSerializer
 
 class CurrentUserView(views.APIView):
     def get(self, request):
