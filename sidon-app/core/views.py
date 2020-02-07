@@ -16,7 +16,6 @@ class CommonCriteriaView(viewsets.ModelViewSet):
 
 class ScansView(viewsets.ModelViewSet):
     queryset = Scan.objects.all()
-    print(queryset.results)
     serializer_class = ScansSerializer
 
 class CurrentUserView(views.APIView):
