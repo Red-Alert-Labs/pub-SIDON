@@ -11,7 +11,7 @@ def predict():
 
     values = request.json['data']
 
-    classifier = CustomModelPrediction.from_path('.')
+    classifier = CustomModelPrediction.from_path('/opt/data/mlengine')
     print(classifier)
     results = classifier.predict(values)
     ret = '{"prediction":' + str(str(results)) + '}'

@@ -41,6 +41,7 @@ services:
     build:  ml-engine
     volumes:
       - ./ml-engine/app:/opt/services/engine
+      - /opt/data/mlengine:/opt/data/mlengine
     ports:
       - 5000:5000
 
