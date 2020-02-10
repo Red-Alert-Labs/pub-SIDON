@@ -7,7 +7,7 @@ class ResultsTable extends Component {
   columns = [
     { path: "id", label: "ID" },
     { path: "name", label: "Name" },
-    { path: "date", label: "Date" }
+    { path: "uploaded_at", label: "Date" }
   ];
   render() {
     const { scans } = this.props;
