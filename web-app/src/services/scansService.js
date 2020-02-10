@@ -18,7 +18,7 @@ export function getScan(scanID) {
   return http.get(uniqueUrl(scanID));
 }
 
-function saveScan(scan) {
+export function saveScan(scan) {
   if (scan.id) {
     const body = { ...scan };
     delete body.id;
