@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from "./common/Card";
 import ResultsTable from "./resultsTable";
+import { getScans } from "../services/scansService";
 
 const fakeData = [
   { id: 1, name: "DoorLock.bin", date: "12/12/2021" },
@@ -11,11 +12,21 @@ const fakeData = [
 ];
 
 class ScanResults extends Component {
-  state = {};
+  state = {
+    scans: []
+  };
+
+  async componentDidMount() {
+    const { data: scans } = await getScans();
+    this.setState({ scans });
+  }
   render() {
     return (
       <div className="container-fluid">
-        <Card title="Results" body={<ResultsTable scans={fakeData} />} />
+        <Card
+          title="Results"
+          body={<ResultsTable scans={this.state.scans} />}
+        />
       </div>
     );
   }

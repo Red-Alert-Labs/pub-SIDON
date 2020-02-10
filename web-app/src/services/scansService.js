@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiEndPoint = "/scans";
+const apiEndPoint = "/scans/";
 
 function uniqueUrl(id) {
   return `${apiEndPoint}${id}/`;
