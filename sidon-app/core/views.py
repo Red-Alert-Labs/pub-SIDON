@@ -4,7 +4,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
 from .models import RequirementsGroup, CommonCriteria, Scan
-from .serializers import RequirementsGroupSerializer, CommonCriteriaSerializer, UserSerializer, ScansSerializer
+from .serializers import RequirementsGroupSerializer, CommonCriteriaSerializer, UserSerializer, ScanSerializer, ScansSerializer
 
 class RequirementsGroupView(viewsets.ModelViewSet):
     queryset = RequirementsGroup.objects.all()
