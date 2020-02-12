@@ -19,7 +19,7 @@ class ResultsSerializer(serializers.ModelSerializer):
     requirements = CommonCriteriaSerializer(read_only=True, many=True)
     class Meta:
         model = Result
-        fields = ('requirements',)
+        fields = ('requirements','score')
 
 class ScansSerializer(serializers.ModelSerializer):
     results = ResultsSerializer(read_only=True, many=True)
