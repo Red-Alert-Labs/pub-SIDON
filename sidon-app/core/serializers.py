@@ -37,4 +37,4 @@ class UserSerializer(serializers.ModelSerializer):
 class ScanSerializer(serializers.ModelSerializer):
     class Meta:
         model = Scan
-        fields = ('name', 'uploaded_at', 'file')
+        fields = ('id', 'name', 'uploaded_at', 'file')
