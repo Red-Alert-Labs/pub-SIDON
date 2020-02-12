@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 class ScanPanel extends Component {
   state = {
-    filename: "No file selected"
+    file: null
   };
 
   handleFileChange = ({ currentTarget: input }) => {
-    const filename = input.files[0].name;
-    console.log(input.value);
-    this.setState({ filename });
+    const file = input.files[0];
+    this.setState({ file });
   };
 
   validate = () => {
@@ -22,6 +21,11 @@ class ScanPanel extends Component {
     if (errors) return;
   };
   render() {
+    const { file } = this.state;
+    let name = "No file selected";
+    if (file) {
+      name = file.name;
+    }
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit}>
@@ -36,7 +40,7 @@ class ScanPanel extends Component {
             </div>
           </div>
           <div className="wrapper">
-            <p>{this.state.filename}</p>
+            <p>{name}</p>
           </div>
           <hr />
           <div className="wrapper">
