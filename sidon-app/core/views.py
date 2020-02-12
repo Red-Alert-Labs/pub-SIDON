@@ -29,7 +29,7 @@ class ScanView(views.APIView):
     def post(self, request):
         scanSerializer = ScanSerializer(data=request.data)
         if scanSerializer.is_valid():
-            scanSerializer.save()
+            scanObject = scanSerializer.save()
             return Response(scanSerializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(scanSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
