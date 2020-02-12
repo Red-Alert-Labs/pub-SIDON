@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 class ScanPanel extends Component {
   state = {
-    file: null
+    file: null,
+    data: {
+      file: null,
+      name: ""
+    }
   };
 
   handleFileChange = ({ currentTarget: input }) => {
@@ -10,7 +14,7 @@ class ScanPanel extends Component {
   };
 
   validate = () => {
-    return null;
+    return null; //TODO Return errors when there are no files
   };
 
   handleSubmit = e => {
@@ -19,7 +23,10 @@ class ScanPanel extends Component {
     const errors = this.validate();
 
     if (errors) return;
+
+    console.log("FILE ADDED");
   };
+
   render() {
     const { file } = this.state;
     let name = "No file selected";
