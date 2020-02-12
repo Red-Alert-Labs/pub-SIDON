@@ -18,7 +18,7 @@ class Dashboard extends Component {
           </a>
         </div>
         {/* InfoCard Row */}
-        <Card title="Scan" body={<ScanPanel />} />
+        <Card title="Scan" body={<ScanPanel {...this.props} />} />
       </div>
     );
   }

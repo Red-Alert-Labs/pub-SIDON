@@ -24,5 +24,5 @@ export function saveScan(scan) {
     delete body.id;
     return http.put(uniqueUrl(scan.id), body);
   }
-  return http.post(apiEndPoint, scan);
+  return http.post('/scan/', scan);
 }

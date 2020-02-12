@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { saveScan } from "../services/scansService";
 class ScanPanel extends Component {
   state = {
     file: null,
@@ -10,7 +11,13 @@ class ScanPanel extends Component {
 
   handleFileChange = ({ currentTarget: input }) => {
     const file = input.files[0];
-    this.setState({ file });
+    console.log(file);
+    const data = {
+      file: file,
+      name: file.name
+    };
+    console.log(data);
+    this.setState({ file, data });
   };
 
   validate = () => {
@@ -24,7 +31,25 @@ class ScanPanel extends Component {
 
     if (errors) return;
 
-    console.log("FILE ADDED");
+    this.doSubmit();
+  };
+
+  doSubmit = async () => {
+    const formData = new FormData();
+    formData.append("file", this.state.file);
+    formData.append("name", this.state.data.name);
+    try {
+      const { data, status } = await saveScan(formData);
+      console.log("Uploaded" + status);
+      if (status === 201) {
+        console.log(this.props.history);
+        this.props.history.push("/scans/" + data.id);
+      } else {
+        console.log("No status");
+      }
+    } catch (ex) {
+      if (ex.response) console.log("Upload failed ERROR");
+    }
   };
 
   render() {
