@@ -41,6 +41,7 @@ class ScanResult extends Component {
                   value={result.score}
                 />
               ))}
+              <ResultBar key={7} title={"Invalid pointer"} value={55} />
             </React.Fragment>
           }
         />

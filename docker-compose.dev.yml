@@ -40,6 +40,13 @@ services:
     ports:
       - 5432:5432
 
+  mlengine:
+    build:  ml-engine
+    volumes:
+      - ./ml-engine/app:/opt/services/engine
+    ports:
+      - 5000:5000
+
 networks:
   nginx_network:
     driver: bridge
