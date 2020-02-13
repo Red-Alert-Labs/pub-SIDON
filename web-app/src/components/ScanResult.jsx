@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import Card from "./common/Card";
 import ResultBar from "./common/ResultBar";
 import { getScan } from "../services/scansService";
+import { getResult } from "../services/resultService";
 
 class ScanResult extends Component {
   state = {
+    scan: null,
     results: []
   };
 
@@ -12,11 +14,13 @@ class ScanResult extends Component {
     const scanId = this.props.match.params.id;
 
     try {
-      const { data } = await getScan(scanId);
-      if (data) {
-        console.log(data);
-        const { results } = data;
-        console.log(results);
+      const { data: scan } = await getScan(scanId);
+      if (scan) {
+        this.setState({ scan });
+      }
+      const { data: results } = await getResult(scanId);
+      console.log(results);
+      if (results) {
         this.setState({ results });
       }
     } catch (ex) {
@@ -37,11 +41,10 @@ class ScanResult extends Component {
               {results.map(result => (
                 <ResultBar
                   key={result.id}
-                  title={result.name}
+                  title={result.commonCriteria.name}
                   value={result.score}
                 />
               ))}
-              <ResultBar key={7} title={"Invalid pointer"} value={55} />
             </React.Fragment>
           }
         />

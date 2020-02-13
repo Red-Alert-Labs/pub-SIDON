@@ -22,10 +22,9 @@ class ResultsSerializer(serializers.ModelSerializer):
         fields = ('scan', 'commonCriteria', 'score')
 
 class ScansSerializer(serializers.ModelSerializer):
-    results = ResultsSerializer(read_only=True, many=True)
     class Meta:
         model = Scan
-        fields = ('id', 'name', 'uploaded_at', 'results')
+        fields = ('id', 'name', 'uploaded_at')
 
 class UserSerializer(serializers.ModelSerializer):
     """docstring for UserSerializer."""

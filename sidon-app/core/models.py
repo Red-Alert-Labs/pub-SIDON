@@ -24,4 +24,4 @@ class Scan(models.Model):
 class Result(models.Model):
     scan = models.ForeignKey(Scan, on_delete=models.CASCADE)
     commonCriteria = models.ForeignKey(CommonCriteria, on_delete=models.CASCADE)
-    score = models.IntegerField(default=0)
+    score = models.IntegerField(default=-1)
