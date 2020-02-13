@@ -25,9 +25,10 @@ def getDataAsJson(f):
 #Communicates with the ML prediction server
 def getPrediction(file):
     data = getDataAsJson(file)
-    response = requests.post('http://127.0.0.1:5000/pred', data=data,headers=http_header)
+    #Hard Coded URL must be removed. Load from env
+    response = requests.post('http://127.0.0.1:5002/pred', data=data, headers=http_header)
     print(response)
     if response.status_code == 200:
-        return json.loads(response.data)
+        return response.json()
     else:
         return None

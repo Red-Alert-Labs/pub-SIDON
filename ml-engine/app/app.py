@@ -8,7 +8,13 @@ app = Flask(__name__)
 
 
 def calculateScore(good, bad):
-    return 50
+    goodval = int(good * 100)
+    notbadval = 100 - int(bad * 100)
+    score = (goodval + notbadval) / 2
+    if score > 100:
+        return 100
+    return int(score)
+
 
 @app.route("/pred", methods=['POST'])
 def predict():
@@ -21,13 +27,15 @@ def predict():
     predictions = []
 
     for r in results:
-        prediction = {}
-        prediction["good"] = str(r[0])
-        prediction["bad"] = str(r[1])
-        prediction["score"] = calculateScore(r[0], r[1])
+        prediction = {
+            "good" : str(r[0]),
+            "bad" : str(r[1]),
+            "score" : calculateScore(r[0], r[1])
+        }
+        
         predictions.append(prediction)
 
-    return jsonify(predictions)
+    return jsonify(predictions[0])
 
 
 if __name__ == "__main__":
