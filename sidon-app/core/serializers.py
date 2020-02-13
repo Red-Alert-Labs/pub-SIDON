@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from .models import RequirementsGroup, CommonCriteria, Scan, Result
 
 
-
 class CommonCriteriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommonCriteria
