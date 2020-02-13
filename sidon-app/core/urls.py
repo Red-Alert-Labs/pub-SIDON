@@ -12,4 +12,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('user/', views.CurrentUserView.as_view()),
     path('scan/', views.ScanView.as_view()),
+    path('result/<int:pk>/', views.ResultDetail.as_view()),
 ]

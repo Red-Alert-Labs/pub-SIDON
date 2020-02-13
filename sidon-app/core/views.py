@@ -18,6 +18,18 @@ class ScansView(viewsets.ModelViewSet):
     queryset = Scan.objects.all()
     serializer_class = ScansSerializer
 
+class ResultDetail(views.APIView):
+    def get_object(self, scanID):
+        try:
+            return Result.objects.filter(scan=scanID).all()
+        except Result.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        result = Result.objects.filter(scan=pk).all()#self.get_object(pk)
+        serializer = ResultsSerializer(result, many=True)
+        return Response(serializer.data)
+
 class CurrentUserView(views.APIView):
     def get(self, request):
         serializer = UserSerializer(request.user)

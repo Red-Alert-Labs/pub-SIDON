@@ -16,10 +16,10 @@ class RequirementsGroupSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'requirements')
 
 class ResultsSerializer(serializers.ModelSerializer):
-    requirements = CommonCriteriaSerializer(read_only=True, many=True)
+    commonCriteria = CommonCriteriaSerializer(read_only=True);
     class Meta:
         model = Result
-        fields = ('requirements','score')
+        fields = ('scan', 'commonCriteria', 'score')
 
 class ScansSerializer(serializers.ModelSerializer):
     results = ResultsSerializer(read_only=True, many=True)
