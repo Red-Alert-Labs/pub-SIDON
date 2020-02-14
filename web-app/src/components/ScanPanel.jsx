@@ -3,25 +3,37 @@ import { saveScan } from "../services/scansService";
 class ScanPanel extends Component {
   state = {
     file: null,
-    data: {
-      file: null,
-      name: ""
-    }
+    requirements: null
   };
 
   handleFileChange = ({ currentTarget: input }) => {
     const file = input.files[0];
-    console.log(file);
-    const data = {
-      file: file,
-      name: file.name
-    };
-    console.log(data);
-    this.setState({ file, data });
+    this.setState({ file });
+  };
+
+  processFile = e => {
+    const content = e.target.result;
+    const requirements = JSON.parse(content);
+    this.setState({ requirements });
+  };
+
+  loadFile = file => {
+    const fileData = new FileReader();
+    fileData.onloadend = this.processFile;
+    fileData.readAsText(file);
+  };
+
+  handleRcFileChange = ({ currentTarget: input }) => {
+    const rcFile = input.files[0];
+    this.loadFile(rcFile);
   };
 
   validate = () => {
-    return null; //TODO Return errors when there are no files
+    const { file, requirements } = this.state;
+    if (file === null || requirements === null) {
+      return 1;
+    }
+    return null;
   };
 
   handleSubmit = e => {
@@ -37,7 +49,8 @@ class ScanPanel extends Component {
   doSubmit = async () => {
     const formData = new FormData();
     formData.append("file", this.state.file);
-    formData.append("name", this.state.data.name);
+    formData.append("name", this.state.file.name);
+    formData.append("requirements", this.state.requirements);
     try {
       const { data, status } = await saveScan(formData);
       console.log("Uploaded" + status);
@@ -58,6 +71,13 @@ class ScanPanel extends Component {
     if (file) {
       name = file.name;
     }
+
+    let requirements = "Select Requirements";
+
+    if (this.state.requirements) {
+      requirements = this.state.requirements.length + " Requirements";
+    }
+
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit}>
@@ -76,15 +96,17 @@ class ScanPanel extends Component {
           </div>
           <hr />
           <div className="wrapper">
-            <h3>Select requirements</h3>
+            <h3>{requirements}</h3>
             <button className="btn btn-secondary ml-2">From List</button>
-            <button
-              className="btn btn-secondary ml-2"
-              name="ccfile"
-              type="file"
-            >
-              From File
-            </button>
+            <div className="upload-btn-wrapper">
+              <button className="btn btn-secondary ml-2">From File</button>
+              <input
+                name="ccfile"
+                type="file"
+                accept=".json"
+                onChange={this.handleRcFileChange}
+              />
+            </div>
           </div>
           <hr />
           <div className="wrapper">
