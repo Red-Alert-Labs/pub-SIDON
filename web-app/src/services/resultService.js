@@ -9,3 +9,7 @@ function uniqueUrl(id) {
 export function getResult(scanID) {
   return http.get(uniqueUrl(scanID));
 }
+
+export function addResult(payload) {
+  return http.post(apiEndPoint, payload);
+} 

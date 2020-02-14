@@ -40,7 +40,7 @@ class ScanResult extends Component {
             <React.Fragment>
               {results.map(result => (
                 <ResultBar
-                  key={result.id}
+                  key={result.commonCriteria.id}
                   title={result.commonCriteria.name}
                   value={result.score}
                 />

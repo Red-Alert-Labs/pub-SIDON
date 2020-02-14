@@ -35,7 +35,7 @@ class ResultDetail(views.APIView):
         results = Result.objects.filter(scan=pk).all()
         data = getData(scan.file)
         for result in results:
-            if True:#result.score == -1:
+            if result.score == -1:
                 response = getPrediction(data, result.commonCriteria.cwe_id)
                 if response:
                     result.score = response['score']

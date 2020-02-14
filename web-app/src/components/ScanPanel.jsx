@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { saveScan } from "../services/scansService";
+import { addResult } from "../services/resultService";
 class ScanPanel extends Component {
   state = {
     file: null,
@@ -47,16 +48,26 @@ class ScanPanel extends Component {
   };
 
   doSubmit = async () => {
+    const { requirements } = this.state;
     const formData = new FormData();
     formData.append("file", this.state.file);
     formData.append("name", this.state.file.name);
-    formData.append("results", this.state.requirements);
     try {
       const { data, status } = await saveScan(formData);
-      console.log("Uploaded" + status);
       if (status === 201) {
-        console.log(this.props.history);
-        this.props.history.push("/scans/" + data.id);
+        const payload = [];
+        for (let i = 0; i < requirements.length; i++) {
+          payload.push({
+            scan: data.id,
+            commonCriteria: requirements[i].cwe_id
+          });
+        }
+        const { status } = await addResult(payload);
+        if (status === 201) {
+          this.props.history.push("/scans/" + data.id);
+        } else {
+          console.log(status);
+        }
       } else {
         console.log("No status");
       }
