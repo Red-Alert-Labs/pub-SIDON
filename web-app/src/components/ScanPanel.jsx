@@ -50,7 +50,7 @@ class ScanPanel extends Component {
     const formData = new FormData();
     formData.append("file", this.state.file);
     formData.append("name", this.state.file.name);
-    formData.append("requirements", this.state.requirements);
+    formData.append("results", this.state.requirements);
     try {
       const { data, status } = await saveScan(formData);
       console.log("Uploaded" + status);

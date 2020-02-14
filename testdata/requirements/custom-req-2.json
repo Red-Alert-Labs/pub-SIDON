@@ -1,6 +1,6 @@
 [
   {
-    "CWE": "457",
-    "Name": "Use of Uninitialized Variable"
+    "cwe_id": "457",
+    "name": "Use of Uninitialized Variable"
   }
 ]

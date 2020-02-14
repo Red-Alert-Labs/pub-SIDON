@@ -20,6 +20,11 @@ class ResultsSerializer(serializers.ModelSerializer):
         model = Result
         fields = ('scan', 'commonCriteria', 'score')
 
+class ResultListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Result
+        fields = ('scan', 'commonCriteria', 'score')
+
 class ScansSerializer(serializers.ModelSerializer):
     class Meta:
         model = Scan

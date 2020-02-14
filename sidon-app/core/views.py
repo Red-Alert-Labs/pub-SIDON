@@ -4,8 +4,8 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
 from .models import RequirementsGroup, CommonCriteria, Scan, Result
-from .serializers import RequirementsGroupSerializer, CommonCriteriaSerializer, UserSerializer, ScanSerializer, ScansSerializer, ResultsSerializer
-from .processor import getData, getPrediction
+from .serializers import RequirementsGroupSerializer, CommonCriteriaSerializer, UserSerializer, ScanSerializer, ScansSerializer, ResultsSerializer, ResultListSerializer
+from .processor import getData, getPrediction, changeCWEtoID
 
 class RequirementsGroupView(viewsets.ModelViewSet):
     queryset = RequirementsGroup.objects.all()
@@ -19,6 +19,10 @@ class ScansView(viewsets.ModelViewSet):
     queryset = Scan.objects.all()
     serializer_class = ScansSerializer
 
+class ResultList(viewsets.ModelViewSet):
+    queryset = Result.objects.all()
+    serializer_class = ResultsSerializer
+
 class ResultDetail(views.APIView):
     def get_object(self, scanID):
         try:
@@ -30,8 +34,6 @@ class ResultDetail(views.APIView):
         scan = Scan.objects.get(pk=pk)
         results = Result.objects.filter(scan=pk).all()
         data = getData(scan.file)
-        print(data)
-        print("DOING")
         for result in results:
             if True:#result.score == -1:
                 response = getPrediction(data, result.commonCriteria.cwe_id)
@@ -40,6 +42,14 @@ class ResultDetail(views.APIView):
                     result.save()
         serializer = ResultsSerializer(results, many=True)
         return Response(serializer.data)
+
+    def post(self, request, format=None):
+        changeCWEtoID(request.data)
+        serializer = ResultListSerializer(data=request.data, many=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CurrentUserView(views.APIView):
     def get(self, request):
@@ -51,8 +61,10 @@ class ScanView(views.APIView):
     parser_classes = (MultiPartParser, FormParser)
     def post(self, request):
         scanSerializer = ScanSerializer(data=request.data)
+
         if scanSerializer.is_valid():
             scanObject = scanSerializer.save()
+            print(scanSerializer.data)
             return Response(scanSerializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(scanSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
