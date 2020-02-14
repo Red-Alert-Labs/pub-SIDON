@@ -2,5 +2,13 @@
   {
     "cwe_id": "457",
     "name": "Use of Uninitialized Variable"
+  },
+  {
+    "cwe_id": "416",
+    "name": "Use after free"
+  },
+  {
+    "cwe_id": "835",
+    "name": "Infinite Loop"
   }
 ]

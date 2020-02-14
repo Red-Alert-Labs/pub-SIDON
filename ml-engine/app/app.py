@@ -22,8 +22,8 @@ def predict():
     values = request.json['data']
     cwe  = request.json['cwe']
 
-    print(values)
-    if cwe != 457:
+    classifier = CustomModelPrediction.from_path('.', str(cwe))
+    if classifier == None:
         prediction = {
             "good" : str(0),
             "bad" : str(0),
@@ -31,7 +31,6 @@ def predict():
         }
         return jsonify(prediction)
 
-    classifier = CustomModelPrediction.from_path('.')
     results = classifier.predict(values)
 
     predictions = []
