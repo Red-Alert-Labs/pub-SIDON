@@ -6,10 +6,12 @@ router = routers.DefaultRouter()
 router.register('requirements', views.RequirementsGroupView)
 router.register('commoncriteria', views.CommonCriteriaView)
 router.register('scans', views.ScansView)
-#router.register('result', views.ResultsView)
+router.register('results', views.ResultList)
 
 urlpatterns = [
     path('', include(router.urls)),
     path('user/', views.CurrentUserView.as_view()),
     path('scan/', views.ScanView.as_view()),
+    path('result/<int:pk>/', views.ResultDetail.as_view()),
+    path('result/', views.ResultDetail.as_view()),
 ]

@@ -9,8 +9,6 @@ class CustomModelPrediction(object):
     self._processor = processor
 
   def predict(self, instances, **kwargs):
-    print("predict")
-    print(instances)
     preprocessed_data = self._processor.transform_text(instances)
     predictions = self._model.predict(preprocessed_data)
     return predictions

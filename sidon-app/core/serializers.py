@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from .models import RequirementsGroup, CommonCriteria, Scan, Result
 
 
-
 class CommonCriteriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommonCriteria
@@ -16,16 +15,20 @@ class RequirementsGroupSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'requirements')
 
 class ResultsSerializer(serializers.ModelSerializer):
-    requirements = CommonCriteriaSerializer(read_only=True, many=True)
+    commonCriteria = CommonCriteriaSerializer(read_only=True);
     class Meta:
         model = Result
-        fields = ('requirements','score')
+        fields = ('scan', 'commonCriteria', 'score')
+
+class ResultListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Result
+        fields = ('scan', 'commonCriteria', 'score')
 
 class ScansSerializer(serializers.ModelSerializer):
-    results = ResultsSerializer(read_only=True, many=True)
     class Meta:
         model = Scan
-        fields = ('id', 'name', 'uploaded_at', 'results')
+        fields = ('id', 'name', 'uploaded_at')
 
 class UserSerializer(serializers.ModelSerializer):
     """docstring for UserSerializer."""

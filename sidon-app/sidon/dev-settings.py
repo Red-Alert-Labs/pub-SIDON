@@ -138,6 +138,10 @@ REST_FRAMEWORK = {
 
 APPEND_SLASH = False
 
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+}
 
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
 CORS_ALLOW_HEADERS = [
