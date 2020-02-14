@@ -20,6 +20,16 @@ def calculateScore(good, bad):
 def predict():
 
     values = request.json['data']
+    cwe  = request.json['cwe']
+
+    print(values)
+    if cwe != 457:
+        prediction = {
+            "good" : str(0),
+            "bad" : str(0),
+            "score" : -1
+        }
+        return jsonify(prediction)
 
     classifier = CustomModelPrediction.from_path('.')
     results = classifier.predict(values)
@@ -32,7 +42,7 @@ def predict():
             "bad" : str(r[1]),
             "score" : calculateScore(r[0], r[1])
         }
-        
+
         predictions.append(prediction)
 
     return jsonify(predictions[0])

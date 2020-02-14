@@ -78,7 +78,13 @@ class ScanPanel extends Component {
           <div className="wrapper">
             <h3>Select requirements</h3>
             <button className="btn btn-secondary ml-2">From List</button>
-            <button className="btn btn-secondary ml-2">From File</button>
+            <button
+              className="btn btn-secondary ml-2"
+              name="ccfile"
+              type="file"
+            >
+              From File
+            </button>
           </div>
           <hr />
           <div className="wrapper">

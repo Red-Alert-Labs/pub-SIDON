@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import RequirementsGroup, CommonCriteria, Scan, Result
 from .serializers import RequirementsGroupSerializer, CommonCriteriaSerializer, UserSerializer, ScanSerializer, ScansSerializer, ResultsSerializer
-from .processor import getPrediction
+from .processor import getData, getPrediction
 
 class RequirementsGroupView(viewsets.ModelViewSet):
     queryset = RequirementsGroup.objects.all()
@@ -28,10 +28,17 @@ class ResultDetail(views.APIView):
 
     def get(self, request, pk, format=None):
         scan = Scan.objects.get(pk=pk)
-        response = getPrediction(scan.file)
-        print(response)
-        result = Result.objects.filter(scan=pk).all()#self.get_object(pk)
-        serializer = ResultsSerializer(result, many=True)
+        results = Result.objects.filter(scan=pk).all()
+        data = getData(scan.file)
+        print(data)
+        print("DOING")
+        for result in results:
+            if True:#result.score == -1:
+                response = getPrediction(data, result.commonCriteria.cwe_id)
+                if response:
+                    result.score = response['score']
+                    result.save()
+        serializer = ResultsSerializer(results, many=True)
         return Response(serializer.data)
 
 class CurrentUserView(views.APIView):
