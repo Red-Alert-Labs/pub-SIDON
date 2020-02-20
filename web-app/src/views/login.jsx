@@ -42,7 +42,7 @@ class Login extends Form {
 
     return (
       <div className="sign-in-form">
-        <h4 className="heading-4 center-align">Sign In</h4>
+        <h4 className="heading-4 center-align">SIDON - Sign In</h4>
         <div className="material-row">
           <form className="inner-form" onSubmit={this.handleSubmit}>
             <div className="material-row">
