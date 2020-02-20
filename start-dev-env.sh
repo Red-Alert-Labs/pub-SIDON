@@ -2,8 +2,10 @@ echo "Preparing python env"
 pip freeze > ./sidon-app/requirements.dev.txt
 sed -i.bak '/^psycopg2-binary*/d' ./sidon-app/requirements.dev.txt
 echo "psycopg2==2.8.4" >> ./sidon-app/requirements.dev.txt
+
 echo "React Build"
 cd ./web-app
+yarn install
 yarn run build
 cd ..
 echo "Launching Database"
