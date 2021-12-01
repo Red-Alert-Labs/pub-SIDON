@@ -1,5 +1,5 @@
 # SIDON
-
+Research project to automate discovery of vulnerability in firmware binaries.
 ## Backend Server
 Python web framework is used to develop the backend application. It provides a REST API, authenticated by JWT tokens. 
 The django framework was used to develop the RESTFUL API. The authentication is managed by the in built django admin module.
